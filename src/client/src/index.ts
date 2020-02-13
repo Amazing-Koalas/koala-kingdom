@@ -1,5 +1,12 @@
-console.log("Hello World!");
+// import PIXI from "pixi.js";
+import "./style.css"
+import { Game } from "./Game";
 
-// TODO: --isolatedModules typescript flag shenanigans; not sure what this does
-// but alot of tutorials show it; Blind copy pasta or legit reason?
-export {}
+const canvasID = "game-canvas"
+
+const setup = () => {
+}
+
+window.onload = () => {
+    const game = new Game(canvasID)
+}
