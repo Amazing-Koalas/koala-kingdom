@@ -1,0 +1,170 @@
+{
+    "frames": {
+        "crusader_run_40000.png": {
+            "frame": { "x": 0, "y": 0, "w": 299, "h": 240 },
+            "rotated": false,
+            "trimmed": false,
+            "spriteSourceSize": { "x": 0, "y": 0, "w": 299, "h": 240 },
+            "sourceSize": { "w": 299, "h": 240 },
+            "anchor": { "x": 0.5, "y": 0.5 }
+        },
+        "crusader_run_40001.png": {
+            "frame": { "x": 299, "y": 0, "w": 299, "h": 240 },
+            "rotated": false,
+            "trimmed": false,
+            "spriteSourceSize": { "x": 0, "y": 0, "w": 299, "h": 240 },
+            "sourceSize": { "w": 299, "h": 240 },
+            "anchor": { "x": 0.5, "y": 0.5 }
+        },
+        "crusader_run_40002.png": {
+            "frame": { "x": 598, "y": 0, "w": 299, "h": 240 },
+            "rotated": false,
+            "trimmed": false,
+            "spriteSourceSize": { "x": 0, "y": 0, "w": 299, "h": 240 },
+            "sourceSize": { "w": 299, "h": 240 },
+            "anchor": { "x": 0.5, "y": 0.5 }
+        },
+        "crusader_run_40003.png": {
+            "frame": { "x": 897, "y": 0, "w": 299, "h": 240 },
+            "rotated": false,
+            "trimmed": false,
+            "spriteSourceSize": { "x": 0, "y": 0, "w": 299, "h": 240 },
+            "sourceSize": { "w": 299, "h": 240 },
+            "anchor": { "x": 0.5, "y": 0.5 }
+        },
+        "crusader_run_40004.png": {
+            "frame": { "x": 1196, "y": 0, "w": 299, "h": 240 },
+            "rotated": false,
+            "trimmed": false,
+            "spriteSourceSize": { "x": 0, "y": 0, "w": 299, "h": 240 },
+            "sourceSize": { "w": 299, "h": 240 },
+            "anchor": { "x": 0.5, "y": 0.5 }
+        },
+        "crusader_run_40005.png": {
+            "frame": { "x": 1495, "y": 0, "w": 299, "h": 240 },
+            "rotated": false,
+            "trimmed": false,
+            "spriteSourceSize": { "x": 0, "y": 0, "w": 299, "h": 240 },
+            "sourceSize": { "w": 299, "h": 240 },
+            "anchor": { "x": 0.5, "y": 0.5 }
+        },
+        "crusader_run_40006.png": {
+            "frame": { "x": 0, "y": 240, "w": 299, "h": 240 },
+            "rotated": false,
+            "trimmed": false,
+            "spriteSourceSize": { "x": 0, "y": 0, "w": 299, "h": 240 },
+            "sourceSize": { "w": 299, "h": 240 },
+            "anchor": { "x": 0.5, "y": 0.5 }
+        },
+        "crusader_run_40007.png": {
+            "frame": { "x": 299, "y": 240, "w": 299, "h": 240 },
+            "rotated": false,
+            "trimmed": false,
+            "spriteSourceSize": { "x": 0, "y": 0, "w": 299, "h": 240 },
+            "sourceSize": { "w": 299, "h": 240 },
+            "anchor": { "x": 0.5, "y": 0.5 }
+        },
+        "crusader_run_40008.png": {
+            "frame": { "x": 598, "y": 240, "w": 299, "h": 240 },
+            "rotated": false,
+            "trimmed": false,
+            "spriteSourceSize": { "x": 0, "y": 0, "w": 299, "h": 240 },
+            "sourceSize": { "w": 299, "h": 240 },
+            "anchor": { "x": 0.5, "y": 0.5 }
+        },
+        "crusader_run_40009.png": {
+            "frame": { "x": 897, "y": 240, "w": 299, "h": 240 },
+            "rotated": false,
+            "trimmed": false,
+            "spriteSourceSize": { "x": 0, "y": 0, "w": 299, "h": 240 },
+            "sourceSize": { "w": 299, "h": 240 },
+            "anchor": { "x": 0.5, "y": 0.5 }
+        },
+        "crusader_run_40010.png": {
+            "frame": { "x": 1196, "y": 240, "w": 299, "h": 240 },
+            "rotated": false,
+            "trimmed": false,
+            "spriteSourceSize": { "x": 0, "y": 0, "w": 299, "h": 240 },
+            "sourceSize": { "w": 299, "h": 240 },
+            "anchor": { "x": 0.5, "y": 0.5 }
+        },
+        "crusader_run_40011.png": {
+            "frame": { "x": 1495, "y": 240, "w": 299, "h": 240 },
+            "rotated": false,
+            "trimmed": false,
+            "spriteSourceSize": { "x": 0, "y": 0, "w": 299, "h": 240 },
+            "sourceSize": { "w": 299, "h": 240 },
+            "anchor": { "x": 0.5, "y": 0.5 }
+        },
+        "crusader_run_40012.png": {
+            "frame": { "x": 0, "y": 480, "w": 299, "h": 240 },
+            "rotated": false,
+            "trimmed": false,
+            "spriteSourceSize": { "x": 0, "y": 0, "w": 299, "h": 240 },
+            "sourceSize": { "w": 299, "h": 240 },
+            "anchor": { "x": 0.5, "y": 0.5 }
+        },
+        "crusader_run_40013.png": {
+            "frame": { "x": 299, "y": 480, "w": 299, "h": 240 },
+            "rotated": false,
+            "trimmed": false,
+            "spriteSourceSize": { "x": 0, "y": 0, "w": 299, "h": 240 },
+            "sourceSize": { "w": 299, "h": 240 },
+            "anchor": { "x": 0.5, "y": 0.5 }
+        },
+        "crusader_run_40014.png": {
+            "frame": { "x": 598, "y": 480, "w": 299, "h": 240 },
+            "rotated": false,
+            "trimmed": false,
+            "spriteSourceSize": { "x": 0, "y": 0, "w": 299, "h": 240 },
+            "sourceSize": { "w": 299, "h": 240 },
+            "anchor": { "x": 0.5, "y": 0.5 }
+        },
+        "crusader_run_40015.png": {
+            "frame": { "x": 897, "y": 480, "w": 299, "h": 240 },
+            "rotated": false,
+            "trimmed": false,
+            "spriteSourceSize": { "x": 0, "y": 0, "w": 299, "h": 240 },
+            "sourceSize": { "w": 299, "h": 240 },
+            "anchor": { "x": 0.5, "y": 0.5 }
+        },
+        "crusader_run_40016.png": {
+            "frame": { "x": 1196, "y": 480, "w": 299, "h": 240 },
+            "rotated": false,
+            "trimmed": false,
+            "spriteSourceSize": { "x": 0, "y": 0, "w": 299, "h": 240 },
+            "sourceSize": { "w": 299, "h": 240 },
+            "anchor": { "x": 0.5, "y": 0.5 }
+        }
+    },
+    "animations": {
+        "crusader_run": [
+            "crusader_run_40000.png",
+            "crusader_run_40001.png",
+            "crusader_run_40002.png",
+            "crusader_run_40003.png",
+            "crusader_run_40004.png",
+            "crusader_run_40005.png",
+            "crusader_run_40006.png",
+            "crusader_run_40007.png",
+            "crusader_run_40008.png",
+            "crusader_run_40009.png",
+            "crusader_run_40010.png",
+            "crusader_run_40011.png",
+            "crusader_run_40012.png",
+            "crusader_run_40013.png",
+            "crusader_run_40014.png",
+            "crusader_run_40015.png",
+            "crusader_run_40016.png"
+        ]
+    },
+    "meta": {
+        "app": "https://www.codeandweb.com/texturepacker",
+        "version": "1.0",
+        "image": "north.png",
+        "format": "RGBA8888",
+        "size": { "w": 1794, "h": 720 },
+        "scale": "1",
+        "smartupdate": "$TexturePacker:SmartUpdate:03681872ce3b067754f6236ca9c4833d:93f583eb376ce7edfeaeb1df71e8369d:87a5eb9e36eaf4d38a6536553d60db08$"
+    }
+}

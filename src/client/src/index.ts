@@ -1,12 +1,31 @@
-// import PIXI from "pixi.js";
-import "./style.css"
-import { Game } from "./Game";
+import {
+    getCanvasEl,
+    createPixiApp,
+    loadPixiAssets,
+    initializeComponents,
+} from "./framework";
+import { Scene, Textures } from "./constants";
+import { initState } from "./state";
 
-const canvasID = "game-canvas"
+const initGame = async () => {
+    const canvasEl = getCanvasEl("game");
+    canvasEl.height = window.innerHeight;
+    canvasEl.width = window.innerWidth;
 
-const setup = () => {
-}
+    const pixiApp = createPixiApp({
+        view: canvasEl,
+        width: Scene.Width,
+        height: Scene.Height,
+    });
 
-window.onload = () => {
-    const game = new Game(canvasID)
-}
+    const [_, level] = await Promise.all([
+        loadPixiAssets(Textures),
+        import("./assets/sprites.json"),
+    ]);
+
+    const initializer = initializeComponents(pixiApp, [], initState({}));
+
+    initializer();
+};
+
+initGame();

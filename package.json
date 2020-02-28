@@ -1,0 +1,19 @@
+{
+  "name": "koala-kingdom",
+  "version": "1.0.0",
+  "description": "Survival game",
+  "repository": "git@github.com:JemalAbdullahi/koala-kingdom.git",
+  "private": true,
+  "license": "MIT",
+  "scripts": {
+    "watch:client": "cd src/client; yarn watch",
+    "build:client": "cd src/client; yarn build",
+    "install:client": "cd src/client; yarn install",
+    "install:server": "yarn install"
+  },
+  "devDependencies": {
+    "copy-webpack-plugin": "^5.1.1",
+    "prettier": "^1.19.1",
+    "typescript": "^3.7.5"
+  }
+}
