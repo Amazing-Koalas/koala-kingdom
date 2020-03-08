@@ -5,6 +5,7 @@ export interface AppConfig {
     height: number;
 }
 
+// export type RenderFn<T> = (displayObject: PIXI.DisplayObject, state: T) => void;
 export type RenderFn<T> = (displayObject: PIXI.DisplayObject, state: T) => void;
 
 export type GameComponent<T> = (

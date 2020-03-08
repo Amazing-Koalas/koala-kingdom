@@ -1,27 +1,44 @@
 import * as PIXI from "pixi.js";
 import { GameComponent, RenderFn } from "../framework";
 import { GameState } from "../state";
-import { CharacterMode } from "../constants";
+import { CharacterMode, Textures } from "../constants";
 
 const CharacterTextures = {
-    [CharacterMode.RunningNorth]: "north/crusader_run",
-    [CharacterMode.RunningNorthEast]: "north_east/crusader_run",
-    [CharacterMode.RunningEast]: "east/crusader_run",
-    [CharacterMode.RunningSouthEast]: "south_east/crusader_run",
-    [CharacterMode.RunningSouth]: "south/crusader_run",
-    [CharacterMode.RunningSouthWest]: "south_west/crusader_run",
-    [CharacterMode.RunningWest]: "west/crusader_run",
-    [CharacterMode.RunningNorthWest]: "north_west/crusader_run",
+    [CharacterMode.Idle]: "idle",
+    [CharacterMode.RunningNorth]: "running",
+    [CharacterMode.RunningEast]: "running",
+    [CharacterMode.RunningWest]: "running",
+    [CharacterMode.RunningSouth]: "running",
+    [CharacterMode.Falling]: "falling",
+    [CharacterMode.Jumping]: "jumping",
 };
 
+//@ts-ignore this is correct. Don't know why typescript is complaining.
 const render: RenderFn<GameState> = (sprite: PIXI.AnimatedSprite, state) => {
+    const { world } = state;
+    const resource = PIXI.Loader.shared.resources[Textures.Character];
+    sprite.scale.x = world.character.direction
+        ? Math.abs(sprite.scale.x) * world.character.direction
+        : sprite.scale.x;
+    
+    sprite.x = world.character.x;
+    sprite.y = world.character.y;
+
+    resource.spritesheet!.animations; // what? Why is this here
+    const currentAnimation = CharacterTextures[world.character.mode];
+    const currentTexture = resource.spritesheet!.animations[currentAnimation];
+
+    if (sprite.textures !== currentTexture) {
+        sprite.textures = currentTexture;
+        sprite.play();
+    }
 };
 
 export const Character: GameComponent<GameState> = state => {
     const { world } = state;
-    const resource = PIXI.Loader.shared.resources["./assets/sprites.json"];
+    const resource = PIXI.Loader.shared.resources[Textures.Character];
     const sprite = new PIXI.AnimatedSprite(
-        resource.spritesheet!.animations.
+        resource.spritesheet!.animations.idle
         // resource.spritesheet!.animations.north.crusader_run
     );
     sprite.anchor = new PIXI.Point(0.5, 0.5);

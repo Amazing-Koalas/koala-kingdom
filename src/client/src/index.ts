@@ -6,6 +6,7 @@ import {
 } from "./framework";
 import { Scene, Textures } from "./constants";
 import { initState } from "./state";
+import { Character } from "./components";
 
 const initGame = async () => {
     const canvasEl = getCanvasEl("game");
@@ -20,10 +21,10 @@ const initGame = async () => {
 
     const [_, level] = await Promise.all([
         loadPixiAssets(Textures),
-        import("./assets/sprites.json"),
+        // import("./assets/character/adventurer.json"),
     ]);
 
-    const initializer = initializeComponents(pixiApp, [], initState({}));
+    const initializer = initializeComponents(pixiApp, [Character], initState({}));
 
     initializer();
 };
