@@ -13,7 +13,7 @@ interface InitProps {
 
 interface Character extends WorldObject {
     mode: CharacterMode;
-    direction: CardinalDirection;
+    direction: number;
 }
 
 export interface GameState {

@@ -5,10 +5,10 @@ import { CharacterMode, Textures } from "../constants";
 
 const CharacterTextures = {
     [CharacterMode.Idle]: "idle",
-    [CharacterMode.RunningNorth]: "running",
-    [CharacterMode.RunningEast]: "running",
-    [CharacterMode.RunningWest]: "running",
-    [CharacterMode.RunningSouth]: "running",
+    [CharacterMode.RunningVertical]: "running",
+    [CharacterMode.RunningHorizontal]: "running",
+    //[CharacterMode.RunningWest]: "running",
+    //[CharacterMode.RunningSouth]: "running",
     [CharacterMode.Falling]: "falling",
     [CharacterMode.Jumping]: "jumping",
 };
@@ -21,8 +21,8 @@ const render: RenderFn<GameState> = (sprite: PIXI.AnimatedSprite, state) => {
         ? Math.abs(sprite.scale.x) * world.character.direction
         : sprite.scale.x;
     
-    sprite.x = world.character.x;
-    sprite.y = world.character.y;
+    sprite.x += world.character.x;
+    sprite.y += world.character.y;
 
     resource.spritesheet!.animations; // what? Why is this here
     const currentAnimation = CharacterTextures[world.character.mode];

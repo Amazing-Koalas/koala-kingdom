@@ -1,24 +1,17 @@
-export enum CardinalDirection {
-    North,
-    NorthEast,
-    East,
-    SouthEast,
-    South,
-    SouthWest,
-    West,
-    NorthWest,
-}
-
 export enum CharacterMode {
     Jumping,
-    RunningNorth,
-    RunningEast,
-    RunningSouth,
-    RunningWest,
+    RunningVertical,
+    RunningHorizontal,
     Falling,
     Idle,
 }
 
+export const CardinalDirection = {
+    North: 1,
+    East: 1,
+    South: -1,
+    West: -1,
+}
 export const Scene = {
     Width: 1280,
     Height: 578,
