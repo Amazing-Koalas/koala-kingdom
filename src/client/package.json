@@ -4,32 +4,19 @@
   "license": "MIT",
   "private": true,
   "scripts": {
-    "start": "",
-    "watch": "cross-env NODE_ENV=\"development\" webpack-dev-server",
-    "build": "cross-env NODE_ENV=\"production\" webpack"
+    "start": "webpack-dev-server",
+    "build": "NODE_ENV=production webpack"
   },
   "dependencies": {
-    "pixi.js": "^5.2.1"
+    "pixi.js": "^5.1.1"
   },
   "devDependencies": {
-    "clean-webpack-plugin": "^3.0.0",
-    "copy-webpack-plugin": "^5.1.1",
-    "cross-env": "^7.0.0",
-    "css-loader": "^3.4.2",
+    "typescript": "^3.6.2",
+    "webpack": "^4.30.0",
+    "webpack-cli": "^3.3.1",
+    "webpack-dev-server": "^3.3.1",
+    "copy-webpack-plugin": "^5.0.3",
     "html-webpack-plugin": "^3.2.0",
-    "prettier": "^1.19.1",
-    "style-loader": "^1.1.3",
-    "ts-loader": "^6.2.1",
-    "typescript": "^3.7.5",
-    "webpack": "^4.41.5",
-    "webpack-cli": "^3.3.10",
-    "webpack-dev-server": "^3.10.2",
-    "webpack-manifest-plugin": "^2.2.0"
-  },
-  "prettier": {
-    "trailingComma": "es5",
-    "tabWidth": 4,
-    "semi": true,
-    "singleQuote": false
+    "awesome-typescript-loader": "^5.2.1"
   }
 }
