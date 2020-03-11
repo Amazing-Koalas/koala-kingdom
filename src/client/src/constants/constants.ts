@@ -2,6 +2,7 @@ export enum CharacterMode {
     Jumping,
     RunningVertical,
     RunningHorizontal,
+    //RunningDiagonal,
     Falling,
     Idle,
 }
@@ -15,9 +16,9 @@ export const KeyCodes = {
 };
 
 export const CardinalDirection = {
-    North: 1,
+    North: -1,
     East: 1,
-    South: -1,
+    South: 1,
     West: -1,
 };
 export const Scene = {

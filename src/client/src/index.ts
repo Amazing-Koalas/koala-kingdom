@@ -21,10 +21,7 @@ const initGame = async () => {
         height: Scene.Height,
     });
 
-    const [_, level] = await Promise.all([
-        loadPixiAssets(Textures),
-        //import("./assets/levels/level1.json")
-    ]);
+    const [_, level] = await Promise.all([loadPixiAssets(Textures)]);
 
     const initializer = initializeComponents(
         pixiApp,
