@@ -8,7 +8,7 @@ export interface KeyboardState {
     ArrowDown: boolean;
 }
 
-declare const BetterObject: {
+declare var BetterObject: {
     keys<T extends {}>(object: T): (keyof T)[]
 }
 
