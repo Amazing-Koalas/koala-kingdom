@@ -17,10 +17,8 @@ const CharacterTextures = {
 const render: RenderFn<GameState> = (sprite: PIXI.AnimatedSprite, state) => {
     const { world } = state;
     const resource = PIXI.Loader.shared.resources[Textures.Character];
-    sprite.scale.x = world.character.direction
-        ? Math.abs(sprite.scale.x) * world.character.direction
-        : sprite.scale.x;
-    
+    sprite.scale.x = Math.abs(sprite.scale.x) * world.character.direction;
+
     sprite.x += world.character.x;
     sprite.y += world.character.y;
 
@@ -37,10 +35,7 @@ const render: RenderFn<GameState> = (sprite: PIXI.AnimatedSprite, state) => {
 export const Character: GameComponent<GameState> = state => {
     const { world } = state;
     const resource = PIXI.Loader.shared.resources[Textures.Character];
-    const sprite = new PIXI.AnimatedSprite(
-        resource.spritesheet!.animations.idle
-        // resource.spritesheet!.animations.north.crusader_run
-    );
+    const sprite = new PIXI.AnimatedSprite(resource.spritesheet!.animations.idle);
     sprite.anchor = new PIXI.Point(0.5, 0.5);
     sprite.x = world.character.x;
     sprite.y = world.character.y;

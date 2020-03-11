@@ -26,12 +26,12 @@ export const KeyCodes = {
     ArrowUp: "ArrowUp",
     ArrowDown: "ArrowDown",
     ArrowLeft: "ArrowLeft",
-    ArrowRight: "ArrowRight",
+    ArrowRight: "ArrowRight"
 };
 
 export const World = {
     Character: {
         Speed: 2,
-        Direction: CardinalDirection.South,
+        //Direction: CardinalDirection.South,
     },
 };

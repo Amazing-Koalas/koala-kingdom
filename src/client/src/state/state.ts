@@ -25,12 +25,12 @@ export interface GameState {
 export const initState = ({}: InitProps): GameState => ({
     world: {
         character: {
-            x: 50,
+            x: Scene.Width / 2,
             y: Scene.Height / 2,
             vX: 0,
             vY: 0,
-            direction: 0,
-            mode: CharacterMode.Idle,
-        },
-    },
+            direction: CardinalDirection.East,
+            mode: CharacterMode.Idle
+        }
+    }
 });
