@@ -8,9 +8,9 @@ export interface KeyboardState {
     ArrowDown: boolean;
 }
 
-declare var BetterObject: {
-    keys<T extends {}>(object: T): (keyof T)[]
-}
+declare const BetterObject: {
+    keys<T extends {}>(object: T): (keyof T)[];
+};
 
 const initKeyboardState = () => {
     const keyboard: KeyboardState = {
@@ -21,7 +21,7 @@ const initKeyboardState = () => {
         ArrowDown: false,
     };
 
-    BetterObject.keys(KeyCodes).forEach((code: keyof typeof KeyCodes) => {
+    Object.keys(KeyCodes).forEach((code: keyof typeof KeyCodes) => {
         document.addEventListener("keyup", (e: KeyboardEvent) => {
             if (e.code === code) {
                 keyboard[code] = false;
