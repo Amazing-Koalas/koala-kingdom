@@ -5,8 +5,9 @@ import {
     loadPixiAssets,
     initializeComponents,
 } from "./framework";
-import { Scene, Textures } from "./constants";
+import { Scene, Textures, World } from "./constants";
 import { Character } from "./components/Character";
+import {Background} from "./components/Background";
 import { State } from "./components/State";
 import { initState } from "./state";
 
@@ -25,11 +26,12 @@ const initGame = async () => {
 
     const initializer = initializeComponents(
         pixiApp,
-        [State, Character],
+        [State, Background, Character],
         initState({})
     );
 
     initializer();
+
 };
 
 initGame();

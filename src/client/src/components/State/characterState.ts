@@ -29,10 +29,6 @@ const isCharacterMovingX = (keyboard: KeyboardState) =>
 const isCharacterMovingY = (keyboard: KeyboardState) =>
     keyboard.ArrowUp || keyboard.ArrowDown;
 
-/*const isCharacterJumping = (jump: number) => {
-  return jump > 0;
-};*/
-
 const getCharacterMode = (movingX: boolean, movingY: boolean) => {
     if (movingX) {
         return CharacterMode.RunningHorizontal;
@@ -42,55 +38,25 @@ const getCharacterMode = (movingX: boolean, movingY: boolean) => {
     return CharacterMode.Idle;
 };
 
-/*const getCharacterJump = (
-  keyboard: KeyboardState,
-  prevJump: number,
-  onTheGround: boolean
-) => {
-  if (keyboard.Space && onTheGround) {
-    return World.Character.JumpSpeed;
-  } else if (prevJump > 0 && prevJump < World.Character.JumpThreshold) {
-    return World.Character.JumpThreshold - prevJump < World.Character.JumpSpeed
-      ? World.Character.JumpThreshold
-      : prevJump + World.Character.JumpSpeed;
-  }
-  return 0;
-};*/
-
-const getCharacterVy = (movingY: boolean, moveDirection: number) => {
-    /*if (jumping) {
-    return -World.Character.JumpSpeed;
-  }*/
-    return movingY ? moveDirection * World.Character.Speed : 0;
-};
-
-const getCharacterVx = (movingX: boolean, moveDirection: number) => {
-    return movingX ? moveDirection * World.Character.Speed : 0;
-};
-
 const getCharacterV = (keyboard: KeyboardState) => {
     const velocities = {
         vX: 0,
         vY: 0,
     };
     if (keyboard.ArrowUp) {
-        velocities.vY -= 5;
+        velocities.vY -= 1 * World.Character.Speed;
     }
     if (keyboard.ArrowDown) {
-        velocities.vY += 5;
+        velocities.vY += 1 * World.Character.Speed;
     }
     if (keyboard.ArrowLeft) {
-        velocities.vX -= 5;
+        velocities.vX -= 1 * World.Character.Speed;
     }
     if (keyboard.ArrowRight) {
-        velocities.vX += 5;
+        velocities.vX += 1 * World.Character.Speed;
     }
     return velocities;
 };
-
-/*const isOnTheGround = (prevY: number) => {
-  return prevY >= Scene.Height / 2;
-};*/
 
 export const calculateCharacterState = (
     { world }: GameState,
@@ -102,11 +68,6 @@ export const calculateCharacterState = (
         keyboard,
         world.character.direction
     );
-    //const onTheGround = isOnTheGround(world.character.y);
-    //const jump = getCharacterJump(keyboard, world.character.jump, onTheGround);
-    //const jumping = isCharacterJumping(jump);
-    const vY = getCharacterVy(movingY, direction);
-    const vX = getCharacterVx(movingX, direction);
     const mode = getCharacterMode(movingX, movingY);
     const v = getCharacterV(keyboard);
     /*if (v.vX !== 0 || v.vY !== 0) {
@@ -126,7 +87,7 @@ export const calculateCharacterState = (
         vX: v.vX,
         vY: v.vY,
         mode,
-        //jump,
+        speed: world.character.speed,
         x: world.character.x + v.vX,
         y: world.character.y + v.vY,
     };

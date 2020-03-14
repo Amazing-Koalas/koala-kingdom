@@ -1,7 +1,7 @@
 import * as PIXI from "pixi.js";
 import { GameComponent, RenderFn } from "../framework";
 import { GameState } from "../state";
-import { CharacterMode, Textures } from "../constants";
+import { CharacterMode, Textures, Scene } from "../constants";
 
 const CharacterTextures = {
     [CharacterMode.Idle]: "idle",
@@ -20,8 +20,8 @@ const render: RenderFn<GameState> = (sprite: PIXI.AnimatedSprite, state) => {
     const resource = PIXI.Loader.shared.resources[Textures.Character];
     sprite.scale.x = Math.abs(sprite.scale.x) * world.character.direction;
 
-    sprite.x += world.character.vX;
-    sprite.y += world.character.vY;
+    sprite.x = Scene.Width / 2 - sprite.width / 2;//world.character.vX;
+    sprite.y = Scene.Height / 2 - sprite.height / 2;//world.character.vY;
 
     resource.spritesheet!.animations;
     const currentAnimation = CharacterTextures[world.character.mode];
@@ -39,10 +39,10 @@ export const Character: GameComponent<GameState> = state => {
     const sprite = new PIXI.AnimatedSprite(
         resource.spritesheet!.animations.idle
     );
-    sprite.x = world.character.x;
-    sprite.y = world.character.y;
+    sprite.x = Scene.Width / 2; //world.character.x;
+    sprite.y = Scene.Height / 2 - sprite.height / 2;//world.character.y;
     sprite.scale = new PIXI.Point(1.5, 1.5);
-    sprite.anchor = new PIXI.Point(0.5, 0.5);
+    sprite.anchor = new PIXI.Point(0.5);
     sprite.play();
     sprite.animationSpeed = 0.2;
     return {

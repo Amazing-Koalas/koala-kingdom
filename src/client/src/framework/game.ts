@@ -1,4 +1,5 @@
 import * as PIXI from "pixi.js";
+import { Character } from "../components/Character";
 export interface AppConfig {
     view: HTMLCanvasElement;
     width: number;
@@ -33,6 +34,7 @@ export const initializeComponents = <T>(
         container.addChild(cmp.displayObject);
         app.ticker.add(() => {
             cmp.render(cmp.displayObject, state);
+
         });
     });
 

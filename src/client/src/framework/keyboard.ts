@@ -25,13 +25,11 @@ const initKeyboardState = () => {
         document.addEventListener("keyup", (e: KeyboardEvent) => {
             if (e.code === code) {
                 keyboard[code] = false;
-                //console.log(code, keyboard[code]);
             }
         });
         document.addEventListener("keydown", (e: KeyboardEvent) => {
             if (e.code === code) {
                 keyboard[code] = true;
-                //console.log(code, keyboard[code]);
             }
         });
     });
