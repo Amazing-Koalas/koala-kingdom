@@ -6,7 +6,7 @@
   "private": true,
   "scripts": {
     "start": "",
-    "watch": "webpack-dev-server --progress --color --mode development --config webpack.config.development.js",
+    "watch": "webpack-dev-server --progress --color --mode development --host 0.0.0.0 --config webpack.config.development.js",
     "build": "webpack --color --mode production --config webpack.config.production.js"
   },
   "dependencies": {
@@ -21,7 +21,6 @@
     "fork-ts-checker-notifier-webpack-plugin": "^2.0.0",
     "fork-ts-checker-webpack-plugin": "^4.1.2",
     "html-webpack-plugin": "^4.0.4",
-    "npm-install-webpack-plugin": "^4.0.5",
     "ts-loader": "^6.2.2",
     "typescript": "^3.8.3",
     "webpack": "^4.42.1",

@@ -7,7 +7,7 @@ import {
 } from "./framework";
 import { Scene, Textures, World } from "./constants";
 import { Character } from "./components/Character";
-import {Background} from "./components/Background";
+import { Background } from "./components/Background";
 import { State } from "./components/State";
 import { initState } from "./state";
 
