@@ -1,4 +1,2 @@
-exports = {
-  "SERVER_PORT": 8080,
-  "WEBPACK_PORT": 8000,
-}
+const SERVER_PORT = 8000;
+const WEBPACK_PORT = 8001;

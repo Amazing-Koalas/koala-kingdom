@@ -10,10 +10,5 @@
     "build:client": "cd src/client; yarn build",
     "install:client": "cd src/client; yarn install",
     "install:server": "yarn install"
-  },
-  "devDependencies": {
-    "copy-webpack-plugin": "^5.1.1",
-    "prettier": "^1.19.1",
-    "typescript": "^3.7.5"
   }
 }

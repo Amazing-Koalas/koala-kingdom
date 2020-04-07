@@ -22,7 +22,7 @@ export const Background: GameComponent<GameState> = () => {
         texture.baseTexture.width,
         texture.baseTexture.height
     ); //new PIXI.Sprite(texture);
-    sprite.scale.x = Scene.Width / width *3;
+    sprite.scale.x = Scene.Width / width * 3;
     sprite.scale.y = Scene.Height / height;
     //sprite.width = Scene.Width;
     //sprite.height = Scene.Height;

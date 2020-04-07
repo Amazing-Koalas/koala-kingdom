@@ -24,7 +24,7 @@ export interface GameState {
     };
 }
 
-export const initState = ({}: InitProps): GameState => ({
+export const initState = (props: InitProps): GameState => ({
     world: {
         character: {
             x: Scene.Width / 2,
