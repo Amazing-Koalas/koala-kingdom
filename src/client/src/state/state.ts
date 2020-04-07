@@ -1,7 +1,6 @@
-import { Scene, CharacterMode, CardinalDirection } from "./constants";
-import { Character } from "./components/Character";
-import { Background } from "./components/Background";
-
+import { Scene, CharacterMode, CardinalDirection } from "../constants";
+import { Character } from "../components/Character";
+import { Background } from "../components/Background";
 
 interface WorldObject {
     x: number;

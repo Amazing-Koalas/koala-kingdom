@@ -6,28 +6,27 @@
   "private": true,
   "scripts": {
     "start": "",
-    "watch": "cross-env NODE_ENV=\"development\" webpack-dev-server",
-    "build": "cross-env NODE_ENV=\"production\" webpack"
+    "watch": "webpack-dev-server --progress --color --mode development --config webpack.config.development.js",
+    "build": "webpack --color --mode production --config webpack.config.production.js"
   },
   "dependencies": {
-    "apollo-boost": "^0.4.7",
-    "apollo-cache": "^1.3.4",
-    "apollo-cache-inmemory": "^1.6.5",
-    "apollo-client": "^2.6.8",
-    "apollo-link": "^1.2.13",
-    "apollo-link-http": "^1.5.16",
-    "clean-webpack-plugin": "^3.0.0",
+    "@pixi/sprite-tiling": "^5.2.1",
+    "pixi.js": "^5.1.1"
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^2.27.0",
+    "@typescript-eslint/parser": "^2.27.0",
     "copy-webpack-plugin": "^5.1.1",
-    "cross-env": "^7.0.0",
-    "css-loader": "^3.4.2",
-    "graphql": "^14.6.0",
-    "html-webpack-plugin": "^3.2.0",
-    "style-loader": "^1.1.3",
-    "ts-loader": "^6.2.1",
-    "typescript": "^3.7.5",
-    "webpack": "^4.41.5",
-    "webpack-cli": "^3.3.10",
-    "webpack-dev-server": "^3.10.2",
+    "eslint": "^6.8.0",
+    "fork-ts-checker-notifier-webpack-plugin": "^2.0.0",
+    "fork-ts-checker-webpack-plugin": "^4.1.2",
+    "html-webpack-plugin": "^4.0.4",
+    "npm-install-webpack-plugin": "^4.0.5",
+    "ts-loader": "^6.2.2",
+    "typescript": "^3.8.3",
+    "webpack": "^4.42.1",
+    "webpack-cli": "^3.3.11",
+    "webpack-dev-server": "^3.10.3",
     "webpack-manifest-plugin": "^2.2.0"
   }
 }
