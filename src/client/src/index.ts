@@ -1,4 +1,3 @@
-//hello testing push
 import {
     getCanvasEl,
     createPixiApp,
@@ -10,6 +9,7 @@ import { Character } from "./components/Character";
 import { Background } from "./components/Background";
 import { State } from "./components/State";
 import { initState } from "./state";
+
 
 const initGame = async () => {
     const canvasEl = getCanvasEl("game");
@@ -30,8 +30,14 @@ const initGame = async () => {
         initState({})
     );
 
+    const startGame = initializeComponents(pixiApp,[Background],initState({}));
+    
+    //startGame();
+    document.getElementById('startScreen').style.display = 'none';
     initializer();
 
 };
 
-initGame();
+let btn = document.getElementById("startBtn");
+btn.onclick = function(){initGame()};
+//initGame();
