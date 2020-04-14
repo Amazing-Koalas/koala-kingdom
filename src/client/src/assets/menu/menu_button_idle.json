@@ -1,0 +1,18 @@
+{
+  "frames": {
+    "menu_button_idle0.png": {
+      "frame": { "x": 0, "y": 0, "w": 80, "h": 16 },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 80, "h": 16 },
+      "sourceSize": { "w": 80, "h": 16 }
+    }
+  },
+  "meta": {
+    "app": "https://github.com/piskelapp/piskel/",
+    "version": "1.0",
+    "image": "menu_button_idle.png",
+    "format": "RGBA8888",
+    "size": { "w": 80, "h": 16 }
+  }
+}

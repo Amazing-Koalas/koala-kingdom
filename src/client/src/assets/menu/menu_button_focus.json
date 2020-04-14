@@ -1,0 +1,18 @@
+{
+  "frames": {
+    "menu_button_focus0.png": {
+      "frame": { "x": 0, "y": 0, "w": 96, "h": 24 },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 96, "h": 24 },
+      "sourceSize": { "w": 96, "h": 24 }
+    }
+  },
+  "meta": {
+    "app": "https://github.com/piskelapp/piskel/",
+    "version": "1.0",
+    "image": "menu_button_focus.png",
+    "format": "RGBA8888",
+    "size": { "w": 96, "h": 24 }
+  }
+}
