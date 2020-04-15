@@ -1,0 +1,10 @@
+{
+  "name": "koala-kingdom",
+  "version": "1.0.0",
+  "description": "A quick multiplayer survival game",
+  "main": "index.js",
+  "repository": "git@github.com:Amazing-Koalas/koala-kingdom.git",
+  "author": "Amazing Koalas <jaredrickert52@gmail.com>",
+  "license": "MIT",
+  "private": false
+}

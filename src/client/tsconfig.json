@@ -7,6 +7,7 @@
         "sourceMap": true,
         "module": "esnext",
         "moduleResolution": "node",
+        "resolveJsonModule": true,
         "jsx": "react",
         "allowJs": false,
         "checkJs": false,

@@ -1,6 +1,6 @@
+import { Store } from "../framework/Store";
+import { Action, rootReducer } from ".";
 import { Scene, CharacterMode, CardinalDirection } from "../constants";
-import { Character } from "../components/Character";
-import { Background } from "../components/Background";
 
 interface WorldObject {
     x: number;
@@ -9,8 +9,6 @@ interface WorldObject {
     vY: number;
 }
 
-interface InitProps {
-}
 
 interface Character extends WorldObject {
     mode: CharacterMode;
@@ -24,7 +22,8 @@ export interface GameState {
     };
 }
 
-export const initState = (props: InitProps): GameState => ({
+// export type initStateArgs = {}
+export const initState: GameState = {
     world: {
         character: {
             x: Scene.Width / 2,
@@ -36,4 +35,16 @@ export const initState = (props: InitProps): GameState => ({
             mode: CharacterMode.Idle
         }
     }
-});
+};
+
+
+export const getStore = (): Store<GameState, Action> => {
+    return new Store<GameState, Action>({
+        reducer: rootReducer,
+        initState: initState,
+    });
+};
+
+export const store = getStore();
+
+export default store;
