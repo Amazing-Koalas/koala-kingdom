@@ -1,15 +1,16 @@
 import * as PIXI from "pixi.js";
 
-export type GameObject = PIXI.DisplayObject | PIXI.Sprite;
+export class DisplayObject extends PIXI.DisplayObject {}
+export class Sprite extends PIXI.Sprite {}
+export type GameObject = DisplayObject | Sprite;
 
 /**
  * 
- * 
  */
-export interface Component {
-    mount: () => GameObject;
+export interface Component<T extends GameObject> {
+    mount: () => T;
     unmount: () => void;
-    render: (gob: GameObject) => void;
+    render: (gob: T) => void;
 }
 
 // const newRootContainer = <Context>(...components: Array<Component>): Component => {

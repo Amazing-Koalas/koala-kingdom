@@ -1,22 +1,26 @@
-import { Store } from "../framework/Store";
+import { Store, StoreArgs } from "../framework/Store";
 import { Action, rootReducer } from ".";
 import { Scene, CharacterMode, CardinalDirection } from "../constants";
 
-interface WorldObject {
+export interface WorldObject {
     x: number;
     y: number;
     vX: number;
     vY: number;
 }
 
+export type Direction = "north" | "south" | "east" | "west";
 
-interface Character extends WorldObject {
+export type CharacterMode = "Jumping" | "RunningVertical" | "RunningHorizontal" | "Falling" | "Idle"
+export interface Character extends WorldObject {
     mode: CharacterMode;
     speed: number;
-    direction: number;
+    direction: Direction;
 }
 
 export interface GameState {
+    nickname: string,
+
     world: {
         character: Character;
     };
@@ -31,20 +35,20 @@ export const initState: GameState = {
             vX: 0,
             vY: 0,
             speed: 2,
-            direction: CardinalDirection.East,
+            direction: "east",
             mode: CharacterMode.Idle
         }
     }
 };
 
-
 export const getStore = (): Store<GameState, Action> => {
     return new Store<GameState, Action>({
         reducer: rootReducer,
-        initState: initState,
-    });
+        initState,
+    } as StoreArgs<GameState, Action>);
 };
 
-export const store = getStore();
+export const globalStore = getStore();
+globalStore.dispatch({ type: "ATTACK", emit: false, damage: 5, direction: "north" });
 
-export default store;
+export default globalStore;

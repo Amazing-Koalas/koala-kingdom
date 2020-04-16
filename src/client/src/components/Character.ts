@@ -1,8 +1,8 @@
 import * as PIXI from "pixi.js";
-import { Component, GameObject } from "../framework";
-import { GameState } from "../state";
+import { Component, GameObject, TextureLoader, Sprite } from "../framework";
+import { GameState, Action, Character as State } from "../state";
 import { CharacterMode, Textures, Scene } from "../constants";
-import { Store } from '../framework/Store';
+import { Store, UnsubscribeFn } from "../framework/Store";
 
 export interface CharacterState {
     name: string,
@@ -17,46 +17,63 @@ export const CharacterTextureMap = {
     "Character": "assets/character/adventurer.json"
 };
 
-export class Character implements Component {
-    private store: Store<GameState>
-    constructor(store: Store<GameState, Action>) {
-        this.store = store;
+export type CharacterArgs = {
+    store: Store<GameState, Action>,
+    loader: TextureLoader<keyof typeof Textures>,
+}
+export class Character implements Component<Sprite> {
+    private store: Store<GameState, Action>;
+    private unsubscribe: UnsubscribeFn;
+    private loader: TextureLoader<keyof typeof Textures>;
+    private data: State = {
+        mode: CharacterMode.Idle,
+        speed: 0,
+        direction: "north",
+        x: 0,
+        y: 0,
+        vX: 0,
+        vY: 0,
+    };
+
+    constructor(args: CharacterArgs) {
+        this.store = args.store;
+        this.loader = args.loader;
     }
 
-    mount(): GameObject {
-        // store.register("");
-        throw new Error("Method not implemented.");
+    mount(): Sprite {
+        this.unsubscribe = this.store.subscribe((state: GameState) => {
+            this.data = { ...state.world.character };
+        });
 
-        doAFter30Seconds(this.distpach(attack({dmg: 5 })))
-
-        this.store.watch("USER.X_POSTION", this.update)
-        return new PIXI.Sprite()
+        return new Sprite();
     }
 
     unmount(): void {
-        // this.store.unregister(this, 'user')
+        this.unsubscribe();
+    }
+
+    render(sprite: Sprite): void {
+        const { direction, x, vX, y, vY, mode } = this.data;
+        // const resource =  this.loader.resources[Textures.Character];
+        const resource = this.loader.getResource("Character");
+        const texture = resource.spritesheet.animations[CharacterTextureMap[mode]];
+        // sprite.scale.x = Math.abs(sprite.scale.x) * direction;
+
+        // sprite.x = Scene.Width / 2 - sprite.width / 2;//world.character.vX;
+        // sprite.y = Scene.Height / 2 - sprite.height / 2;//world.character.vY;
+        sprite.x = Math.abs(x + xY);
+        sprite.y = Math.abs(y + vY);
+
+        resource.spritesheet!.animations;
+        const currentAnimation = CharacterTextures[world.character.mode];
+        const currentTextures = resource.spritesheet!.animations[currentAnimation];
+
+        sprite.texture = currentTextures;
+        if (sprite.textures !== currentTextures) {
+            sprite.textures = currentTextures;
+            sprite.play();
+        }
         throw new Error("Method not implemented.");
-    }
-
-    render(gob: GameObject): void {
-        const sprite = gob;
-
-        const { world } = state;
-        const resource = ctx.loader.resources[Textures.Character];
-        sprite.scale.x = Math.abs(sprite.scale.x) * world.character.direction;
-
-        sprite.x = Scene.Width / 2 - sprite.width / 2;//world.character.vX;
-        sprite.y = Scene.Height / 2 - sprite.height / 2;//world.character.vY;
-
-    resource.spritesheet!.animations;
-    const currentAnimation = CharacterTextures[world.character.mode];
-    const currentTextures = resource.spritesheet!.animations[currentAnimation];
-
-    if (sprite.textures !== currentTextures) {
-        sprite.textures = currentTextures;
-        sprite.play();
-    }
-    throw new Error("Method not implemented.");
     }
 }
 

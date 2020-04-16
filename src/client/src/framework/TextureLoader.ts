@@ -11,96 +11,37 @@ export type TextureLoaderArgs<T extends string> = {
     onStart?: () => void,
 }
 export class TextureLoader<T extends string> {
-    private loader: Promise<PIXI.Loader>
-    public readonly textureMap: Readonly<TextureMap<T>>;
+    private loader: PIXI.Loader
+    public readonly textureMap: Readonly<Record<T, string>>;
 
-    // public static async loadAssets<T extends string>(textureMap: TextureMap<T>): Promise<TextureLoader<T>> {
-    //     return new Promise(resolve => {
-    //         const loader = new TextureLoader();
-    //         loader._loadAssets(textureMap)
-    //             .then(() => resolve(loader));
-    //     });
-    // }
-
-    public constructor(args: TextureLoaderArgs<T>) {
-        this.textureMap = args.textureMap;
-        this.loader = new Promise(resolve => {
-            const loader = new PIXI.Loader();
-            loader.onComplete = args.onComplete;
-            loader.onError = args.onError;
-            loader.onLoad = args.onLoad;
-            loader.onProgress = args.onProgress;
-            loader.onStart = args.onStart;
-            loader.add(
-                Object.keys(this.textureMap).map(
+    public static async loadAssets<T extends string>(args: TextureLoaderArgs<T>): Promise<TextureLoader<T>> {
+        return new Promise(resolve => {
+            const pixiLoader = new PIXI.Loader();
+            pixiLoader.onComplete = args.onComplete;
+            pixiLoader.onError = args.onError;
+            pixiLoader.onLoad = args.onLoad;
+            pixiLoader.onProgress = args.onProgress;
+            pixiLoader.onStart = args.onStart;
+            pixiLoader.add(
+                Object.keys(args.textureMap).map(
                     key => {
-                        return this.textureMap[key];
+                        return args.textureMap[key];
                     }
                 )
             );
+            const loader = new TextureLoader(pixiLoader);
             resolve(loader);
         });
     }
 
-    public async getResource(textureKey: T): Promise<PIXI.LoaderResource> {
-        const loader = await this.loader;
-        const resource = loader.resources[textureKey];
-        return resource;
+    private constructor(textureMap: TextureMap<T>, loader: PIXI.Loader) {
+        this.textureMap = textureMap;
+        this.loader = loader;
     }
 
-    // private async _loadAssets(textureMap: TextureMap<T>): Promise<TextureLoader<T>> {
-    //     return new Promise(resolve => {
-    //         this.textureMap = textureMap;
-    //         for (const key in textureMap) {
-    //             this.loader.add(key, textureMap[key]);
-    //         }
-    //         // this.add(Object.keys(textureMap).map(
-    //         //     (key: T) => textureMap[key]
-    //         // ));
-
-    //         this.load((loader, resources) => {
-    //             resolve(this);
-    //         });
-    //     });
-    // }
-
-
-    // private async load(
-    // // cb?: (loader: PIXI.Loader, resources: Partial<Record<string, PIXI.LoaderResource>>
-    // ): Promise<this> {
-    //     return new Promise(resolve => {
-    //         if (!this.isLoaded) {
-    //             this.loader.load((loader, resources) => {
-    //                 resolve(this);
-    //             });
-    //         } else {
-    //             resolve(this);
-    //         }
-    //     });
-    // }
-    // public async load(textures: Array<T>) {
-    //     return new Promise(resolve => {
-    //         PIXI.Loader.shared.add(
-    //             Object.keys(textures).map(
-    //                 (key) => {
-    //                     return textures[key];
-    //                 }
-    //             )
-    //         );
-    //         PIXI.Loader.shared.load(resolve);
-    //     });
-    // }
-
-    // getResource(texture: T): PIXI.IResourceDictionary {
-    //     const value: string = this.textureMap[texture];
-    //     this.
-    //     return this.resources[value];
-    // }
+    public getResource(textureKey: T): PIXI.LoaderResource {
+        const resourcePath = this.textureMap[textureKey];
+        const resource = this.loader.resources[resourcePath];
+        return resource;
+    }
 }
-
-// const T = {
-//     a: "assets/a.json",
-//     b: "assets/b.json",
-// };
-// const loader = TextureLoader.loadAssets(T);
-// loader.then(l => l.getResource(""));

@@ -5,29 +5,34 @@ export interface StartGame extends BaseAction<"START_GAME"> {
     emit: false;
     nickname: string;
 }
+const startGame = (nickname: string): StartGame => {
+    return {
+        type: "START_GAME",
+        emit: false,
+        nickname,
+    };
+};
+
 export interface Attack extends BaseAction<"ATTACK"> {
     emit: false;
-    payload: {
-        damage: number;
-        direction: Direction;
-    }
+    damage: number;
+    direction: Direction;
 }
-export interface Move extends BaseAction<"MOVE"> {
-    type: "MOVE",
-    emit: true,
-}
-export type Action = Attack | StartGame | Move;
-
 const attack = (damage: number, direction: Direction): Attack => {
     return {
         type: "ATTACK",
         emit: false,
-        payload: {
-            damage,
-            direction
-        }
+        damage,
+        direction
     };
 };
+
+export interface Move extends BaseAction<"MOVE"> {
+    type: "MOVE",
+    emit: true,
+}
+
+export type Action = Attack | StartGame | Move;
 
 // export type ThunkAction<RequestType, ResultType, ErrorType, Request, Response> =
 //   | (BaseAction<RequestType> & { request: Request })

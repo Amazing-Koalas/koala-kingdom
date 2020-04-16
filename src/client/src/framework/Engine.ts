@@ -1,6 +1,6 @@
 import * as PIXI from "pixi.js";
 
-import { Component } from "./Component";
+import { Component, GameObject } from "./Component";
 
 export type EngineArgs = {
     canvas: HTMLCanvasElement;
@@ -18,7 +18,7 @@ export class Engine {
         });
     }
 
-    public async run<App extends Component>(app: App): Promise<this> {
+    public async run<App extends Component<GameObject>>(app: App): Promise<this> {
         const rootObject = app.mount();
         this.app.ticker.add(() => {
             app.render(rootObject);

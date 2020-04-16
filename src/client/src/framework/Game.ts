@@ -1,22 +1,17 @@
 import * as PIXI from "pixi.js";
+import { Component, GameObject }  from "./Component";
 
-// export interface GameArgs<TM extends TextureMap> {
-//     canvasEl: HTMLCanvasElement
-//     width: number;
-//     height: number;
-//     textureMap?: TM;
-//     // loader: TextureLoader<TM>
-// }
 export type GameArgs = {
     canvasEl: HTMLCanvasElement,
     width: number,
     height: number,
 }
 
-export class Game {
+export class Game extends Component<GameOject> {
     private app: PIXI.Application;
     private args: GameArgs;
-    // public __internal: GameInternal;
+    private components: Array<Component<GameObject>> = [];
+
     constructor(args: GameArgs) {
         this.args = args;
     }
@@ -25,20 +20,13 @@ export class Game {
 
     }
 
-    protected rootComponent() {
+    public rootComponent() {
+    }
+
+    protected addComponent(component: Component<GameObject>) {
+        this.components.push(component);
     }
 
     public launch() {
     }
-
-    // public loadAssets(textures) {
-    //     return new Promise(resolve => {
-    //         PIXI.Loader.shared.add(
-    //             Object.keys(textures).map(
-    //                 (key: keyof typeof textures) => textures[key]
-    //             )
-    //         );
-    //         PIXI.Loader.shared.load(resolve);
-    //     });
-    // }
 }

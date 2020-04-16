@@ -18,14 +18,10 @@ import * as Redux from "redux";
  * If you're interested, check out Flux Standard Action for recommendations on
  * how actions should be constructed.
  * 
- * TODO: type data of payload and 
- *
  * @template T the type of the action's `type` tag.
- * @template Payload the data attached to the action
  */
-export interface BaseAction<T, Payload={}> extends Redux.Action<T> {
+export interface BaseAction<T> extends Redux.Action<T> {
     emit: true | false;
-    payload: Payload;
 }
 
 /**
@@ -58,7 +54,7 @@ export type StoreArgs<S, A extends BaseAction<A["type"]>> =
     & A
     & { reducer: Reducer<S, A>; initState: S; };
 
-export type SubscribeFn<A extends BaseAction<A["type"]>> = (a: A["type"], cb: (state: A["payload"]) => void) => void
+export type SubscribeFn<S> = (state: S) => void
 export type UnsubscribeFn = () => void;
 
 /**
@@ -73,7 +69,7 @@ export class Store<S, A extends BaseAction<A["type"]>> {
     private store: Redux.Store<S, A>;
     private subId: number = 0;
     // private subs: Map<Object, (state: S) => void>;
-    private subs: Map<number, SubscribeFn> = {};
+    private subs: Map<number, [boolean, SubscribeFn<S>]> = new Map();
     constructor(args: StoreArgs<S, A>) {
         const is = args.initState as Redux.PreloadedState<S>; // TODO: lazy escape hatch. Need to wrap this some how.
         this.store = Redux.createStore(args.reducer, is);
@@ -81,30 +77,27 @@ export class Store<S, A extends BaseAction<A["type"]>> {
     }
 
     private subHandler() {
-    //     const state = this.getState();
-    //     this.subs.forEach((listener, connect) => {
-    //         connect(state)();
-    //     });
+        const state = this.getState();
+        this.subs.forEach(([marked, cb], key) => {
+            if (marked) {
+                delete this.subs[key];
+            }
+            cb(state);
+        });
     }
 
     public getState(): S {
         return this.store.getState();
     }
 
-    private addSub: Subscribe<A> = (a, cb) => {
-        this.subs[this.subId++] = cb;
+    public subscribe(cb: SubscribeFn<S>): UnsubscribeFn {
+        const id = this.subId++;
+        this.subs[id] = [true, cb];
+        return () => {
+            this.subs[id][0] = false;
+            delete this.subs[id];
+        };
     }
-
-    // public subscribe = (connect: ConnectFn<S>): UnsubscribeFn => {
-    //     const unsubscribe = () => {
-    //         this.subs.delete(listener);
-    //     };
-
-    //     this.subs.set(listener, { 
-    //         connect,
-    //         unsubscribe,
-    //     });
-    // }
 
     public dispatch(action: A) {
         this.store.dispatch(action);
