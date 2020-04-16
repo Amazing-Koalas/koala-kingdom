@@ -12,6 +12,10 @@ import { initState } from "./state";
 
 
 const initGame = async () => {
+
+    const [_, level] = await Promise.all([loadPixiAssets(Textures)]);
+    document.getElementById('startScreen').style.display = 'none';
+
     const canvasEl = getCanvasEl("game");
     canvasEl.height = Scene.Height;
     canvasEl.width = Scene.Width;
@@ -22,7 +26,6 @@ const initGame = async () => {
         height: Scene.Height,
     });
 
-    const [_, level] = await Promise.all([loadPixiAssets(Textures)]);
 
     const initializer = initializeComponents(
         pixiApp,
@@ -30,11 +33,11 @@ const initGame = async () => {
         initState({})
     );
 
-    const startGame = initializeComponents(pixiApp,[Background],initState({}));
+    const startGame  = initializeComponents(pixiApp,[Background],initState({}));
     
-    //startGame();
-    document.getElementById('startScreen').style.display = 'none';
     initializer();
+    startGame();
+    pixiApp.stage.children[0].visible = false;
 
 };
 
