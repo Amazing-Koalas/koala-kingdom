@@ -1,5 +1,33 @@
-/*import { Textures, Scene, World } from "../constants";
+import { Textures, Scene, World } from "../constants";
 
+
+
+
+export class Menu_Button extends PIXI.Sprite{
+    sc: PIXI.Container;
+    //x: number;
+    //y: number;
+    text: PIXI.Text;
+    action;
+
+    constructor(scene: PIXI.Container, x: number, y: number, text: string){
+        //const {world}
+        const resource = PIXI.Loader.shared.resources[Textures.MenuIdle];
+        const texture = resource.textures!["menu_button_idle.png"];
+        super(texture);
+        this.x = x;
+        this.y = y;
+        this.sc = scene;
+        //this.text = new PIXI.Text(text, {fontFamily: 'monospace', fontStyle: 'bold', color: '#ffffff', align: 'center' });
+        //this.sc.
+    }
+}
+
+
+//export const Menu_Button = (scene: PIXI.Container, x: number, y: number, text: String, action) => {
+
+//}
+/*
 class Menu_Button extends PIXI.Sprite
 {
 	constructor(scene, x, y, text = "", action = () => { }) 

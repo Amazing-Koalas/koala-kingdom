@@ -8,6 +8,7 @@ import { Scene, Textures, World } from "./constants";
 import { Character } from "./components/Character";
 import { Background } from "./components/Background";
 import { State } from "./components/State";
+import { Menu } from "./components/Menu";
 import { initState } from "./state";
 
 
@@ -33,11 +34,11 @@ const initGame = async () => {
         initState({})
     );
 
-    const startGame  = initializeComponents(pixiApp,[Background],initState({}));
+    const startGame  = initializeComponents(pixiApp,[Background, Menu],initState({}));
     
-    initializer();
+    //initializer();
     startGame();
-    pixiApp.stage.children[0].visible = false;
+    //pixiApp.stage.children[0].visible = false;
 
 };
 
