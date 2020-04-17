@@ -15,14 +15,14 @@ const render: RenderFn<GameState> = (sprite: PIXI.TilingSprite, state) => {
  */
 export const Background: GameComponent<GameState> = () => {
     const resource = PIXI.Loader.shared.resources[Textures.Background];
-    const texture = resource.textures!["Background0.png"];
+    const texture = resource.textures!["terrain.png"];
     const { width, height } = texture;
     const sprite = new PIXI.TilingSprite(
         texture,
         texture.baseTexture.width,
         texture.baseTexture.height
     ); //new PIXI.Sprite(texture);
-    sprite.scale.x = Scene.Width / width * 3;
+    sprite.scale.x = Scene.Width / width;
     sprite.scale.y = Scene.Height / height;
     //sprite.width = Scene.Width;
     //sprite.height = Scene.Height;

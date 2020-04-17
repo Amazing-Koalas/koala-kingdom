@@ -44,16 +44,16 @@ const getCharacterV = (keyboard: KeyboardState) => {
         vY: 0,
     };
     if (keyboard.ArrowUp) {
-        velocities.vY -= 1 * World.Character.Speed;
+        velocities.vY -= 2 * World.Character.Speed;
     }
     if (keyboard.ArrowDown) {
-        velocities.vY += 1 * World.Character.Speed;
+        velocities.vY += 2 * World.Character.Speed;
     }
     if (keyboard.ArrowLeft) {
-        velocities.vX -= 1 * World.Character.Speed;
+        velocities.vX -= 2 * World.Character.Speed;
     }
     if (keyboard.ArrowRight) {
-        velocities.vX += 1 * World.Character.Speed;
+        velocities.vX += 2 * World.Character.Speed;
     }
     return velocities;
 };

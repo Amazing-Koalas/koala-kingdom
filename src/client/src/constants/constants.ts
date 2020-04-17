@@ -28,7 +28,7 @@ export const Scene = {
 
 export const Textures = {
     Character: "assets/character/adventurer.json",
-    Background: "assets/background/background.json"
+    Background: "assets/background/terrain.json"
 };
 
 export const World = {

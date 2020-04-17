@@ -20,8 +20,8 @@ const render: RenderFn<GameState> = (sprite: PIXI.AnimatedSprite, state) => {
     const resource = PIXI.Loader.shared.resources[Textures.Character];
     sprite.scale.x = Math.abs(sprite.scale.x) * world.character.direction;
 
-    sprite.x = Scene.Width / 2 - sprite.width / 2;//world.character.vX;
-    sprite.y = Scene.Height / 2 - sprite.height / 2;//world.character.vY;
+    sprite.x = Scene.Width / 2 - sprite.width / 2; //world.character.vX;
+    sprite.y = Scene.Height / 2 - sprite.height / 2; //world.character.vY;
 
     resource.spritesheet!.animations;
     const currentAnimation = CharacterTextures[world.character.mode];
@@ -40,7 +40,7 @@ export const Character: GameComponent<GameState> = state => {
         resource.spritesheet!.animations.idle
     );
     sprite.x = Scene.Width / 2; //world.character.x;
-    sprite.y = Scene.Height / 2 - sprite.height / 2;//world.character.y;
+    sprite.y = Scene.Height / 2 - sprite.height / 2 + 4;//world.character.y;
     sprite.scale = new PIXI.Point(1.5, 1.5);
     sprite.anchor = new PIXI.Point(0.5);
     sprite.play();
