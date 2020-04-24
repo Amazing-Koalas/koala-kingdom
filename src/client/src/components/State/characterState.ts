@@ -29,11 +29,15 @@ const isCharacterMovingX = (keyboard: KeyboardState) =>
 const isCharacterMovingY = (keyboard: KeyboardState) =>
     keyboard.ArrowUp || keyboard.ArrowDown;
 
-const getCharacterMode = (movingX: boolean, movingY: boolean) => {
+const getCharacterMode = (movingX: boolean, movingY: boolean, direction) => {
     if (movingX) {
-        return CharacterMode.RunningHorizontal;
+        return CharacterMode.RunSide;
     } else if (movingY) {
-        return CharacterMode.RunningVertical;
+        if(direction === CardinalDirection.South){
+            return CharacterMode.RunUp;
+        }else{
+            return CharacterMode.RunDown;
+        }
     }
     return CharacterMode.Idle;
 };
@@ -68,20 +72,8 @@ export const calculateCharacterState = (
         keyboard,
         world.character.direction
     );
-    const mode = getCharacterMode(movingX, movingY);
+    const mode = getCharacterMode(movingX, movingY, direction);
     const v = getCharacterV(keyboard);
-    /*if (v.vX !== 0 || v.vY !== 0) {
-        console.log(
-            "X: ",
-            world.character.x,
-            " Y: ",
-            world.character.y,
-            "\nVx: ",
-            v.vX,
-            " Vy: ",
-            v.vY
-        );
-    }*/
     return {
         direction,
         vX: v.vX,

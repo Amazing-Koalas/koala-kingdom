@@ -1,10 +1,8 @@
 export enum CharacterMode {
-    Jumping,
-    RunningVertical,
-    RunningHorizontal,
-    //RunningDiagonal,
-    Falling,
-    Idle,
+    RunUp,
+    RunDown,
+    RunSide,
+    Idle
 }
 
 export const KeyCodes = {
@@ -27,13 +25,15 @@ export const Scene = {
 };
 
 export const Textures = {
-    Character: "assets/character/adventurer.json",
-    Background: "assets/background/terrain.json"
+    Character: "assets/character/hero.json",
+    Background: "assets/background/terrain.json",
+    MenuIdle: "assets/menu/menu_button_idle.json",
+    MenuFocus: "assets/menu/menu_button_focus.json"
 };
 
 export const World = {
     Character: {
-        Speed: 2,
+        Speed: 1,
         //Direction: CardinalDirection.South,
     },
 };

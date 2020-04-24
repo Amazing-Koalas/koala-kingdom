@@ -5,13 +5,9 @@ import { CharacterMode, Textures, Scene } from "../constants";
 
 const CharacterTextures = {
     [CharacterMode.Idle]: "idle",
-    [CharacterMode.RunningVertical]: "running",
-    [CharacterMode.RunningHorizontal]: "running",
-    //[CharacterMode.RunningDiagonal]: "running",
-    //[CharacterMode.RunningWest]: "running",
-    //[CharacterMode.RunningSouth]: "running",
-    [CharacterMode.Falling]: "falling",
-    [CharacterMode.Jumping]: "jumping",
+    [CharacterMode.RunDown]: "back_run", 
+    [CharacterMode.RunUp]: "front_run",
+    [CharacterMode.RunSide]: "side_run",
 };
 
 //@ts-ignore this is correct. Don't know why typescript is complaining.
@@ -44,7 +40,7 @@ export const Character: GameComponent<GameState> = state => {
     sprite.scale = new PIXI.Point(1.5, 1.5);
     sprite.anchor = new PIXI.Point(0.5);
     sprite.play();
-    sprite.animationSpeed = 0.2;
+    sprite.animationSpeed = 0.15;
     return {
         displayObject: sprite,
         render,

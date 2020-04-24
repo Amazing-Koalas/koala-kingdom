@@ -35,8 +35,8 @@ export const Menu: GameComponent<GameState> = (state) => {
     const button = new PIXI.Sprite(texture);
 
     button.x = Scene.Width / 2;
-    button.y = Scene.Height / 2.75 + i * 80;
-    button.scale = new PIXI.Point(3, 3);
+    button.y = Scene.Height / 2.3 + i * 50;
+    button.scale = new PIXI.Point(2, 2);
     button.anchor.set(0.5);
     buttonArray[i] = button;
     buttonContainer.addChild(button);
