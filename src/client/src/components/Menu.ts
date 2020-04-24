@@ -1,24 +1,22 @@
-
 import * as PIXI from "pixi.js";
 import { noop, GameComponent, RenderFn } from "../framework";
 import { Textures, Scene } from "../constants";
 import { GameState } from "../state";
 import { Menu_Button } from "../components/MenuButtons";
 
-
-const render: RenderFn<GameState> = (sprite: PIXI.Sprite, state) => {
+const render: RenderFn<GameState> = (container: PIXI.Container, state) => {
   const { world } = state;
   const resource = PIXI.Loader.shared.resources[Textures.MenuIdle];
 
-  sprite.x = Scene.Width / 2 - sprite.width / 2;//world.character.vX;
-  sprite.y = Scene.Height / 2 - sprite.height / 2;//world.character.vY;
-};
+    container.x = Scene.Width / 2 - container.width / 2;
+    container.y = Scene.Height / 2 - container.height / 2;
+}
 /**
  * Creates Menu.
  *
  */
 
-export const Menu: GameComponent<GameState> = state => {
+export const Menu: GameComponent<GameState> = (state) => {
   const { world } = state;
   /*const resource = PIXI.Loader.shared.resources[Textures.MenuIdle];
   const container = new PIXI.Container();
@@ -27,19 +25,25 @@ export const Menu: GameComponent<GameState> = state => {
 
   container.addChild(start);
   */
- const resource = PIXI.Loader.shared.resources[Textures.MenuIdle];
- const texture = resource.textures!["menu_button_idle0.png"];
+  const resource = PIXI.Loader.shared.resources[Textures.MenuIdle];
+  const texture = resource.textures!["menu_button_idle0.png"];
 
- const button = new PIXI.Sprite(texture);
+  let buttonArray: PIXI.Sprite[] = new Array(3);
+  let buttonContainer: PIXI.Container = new PIXI.Container();
 
- button.x = Scene.Width / 2;
- button.y = Scene.Height / 2;
- button.scale = new PIXI.Point(2, 2);
- button.anchor = new PIXI.Point(0.5, 0.5);
+  for (var i = 0; i < 3; i++) {
+    const button = new PIXI.Sprite(texture);
+
+    button.x = Scene.Width / 2;
+    button.y = Scene.Height / 2.75 + i * 80;
+    button.scale = new PIXI.Point(3, 3);
+    button.anchor.set(0.5);
+    buttonArray[i] = button;
+    buttonContainer.addChild(button);
+  }
 
   return {
-    displayObject: button,
-    render: noop
+    displayObject: buttonContainer,
+    render: noop,
   };
 };
-
