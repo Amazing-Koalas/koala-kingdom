@@ -1,0 +1,20 @@
+{"frames": {
+
+"terrain.png":
+{
+	"frame": {"x":0,"y":0,"w":1024,"h":1024},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":1024,"h":1024},
+	"sourceSize": {"w":1024,"h":1024}
+}},
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "terrain.png",
+	"format": "RGBA8888",
+	"size": {"w":1024,"h":1024},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:0998d10d0e5304b54cb4bc9a9dad23ea:ee4252e675bdb6a5dd5a9a7c7603d61d:a52c91d73586a2a634ceb55ad22f4949$"
+}
+}
