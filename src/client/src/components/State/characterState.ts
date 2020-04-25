@@ -66,7 +66,7 @@ const getCharacterV = (keyboard: KeyboardState, speed: number) => {
   return velocities;
 };
 
-const getCharacterSpeed = (keyboard: KeyboardState, prevSpeed: number) =>{
+const getCharacterSpeed = (keyboard: KeyboardState) =>{
     if(keyboard.ShiftLeft){
         return 4;
     }
@@ -83,7 +83,7 @@ export const calculateCharacterState = (
     keyboard,
     world.character.direction
   );
-  const speed = getCharacterSpeed(keyboard, world.character.speed);
+  const speed = getCharacterSpeed(keyboard);
   const mode = getCharacterMode(movingX, movingY, direction);
   const v = getCharacterV(keyboard, speed);
   return {

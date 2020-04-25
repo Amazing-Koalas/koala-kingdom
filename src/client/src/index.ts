@@ -40,8 +40,8 @@ const initGame = async () => {
     //initializer();
     startGame();
     
-    GameContainer.children[3].visible = false;
-    //console.log(GameContainer.chi);
+    GameContainer.children[4].visible = false;
+    console.log(GameContainer.children);
     //pixiApp.stage.children[0].visible = false;
 
 };

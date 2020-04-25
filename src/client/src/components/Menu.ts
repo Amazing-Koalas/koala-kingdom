@@ -11,21 +11,52 @@ const render: RenderFn<GameState> = (container: PIXI.Container, state) => {
   container.x = Scene.Width / 2 - container.width / 2;
   container.y = Scene.Height / 2 - container.height / 2;
 };
+
+const titleText = (text: string) => {
+  const style = new PIXI.TextStyle({
+    align: "center",
+    dropShadow: true,
+    dropShadowAlpha: 0.6,
+    dropShadowAngle: 0.5,
+    dropShadowBlur: 12,
+    dropShadowColor: "#343a74",
+    dropShadowDistance: 12,
+    fill: ["#13b3ff", "#0058b0", "#004080"],
+    fontFamily: "Impact",
+    fontSize: 58,
+    fontStyle: "oblique",
+    fontVariant: "small-caps",
+    letterSpacing: 10,
+    miterLimit: 15,
+    stroke: "#4e4e4e",
+    wordWrap: true,
+  });
+
+
+  let title = new PIXI.Text(text, style);
+  title.x = Scene.Width / 2;
+  title.y = Scene.Height / 2 - title.height - 30;
+  title.anchor.set(0.5);
+  return title;
+};
 /**
  * Creates Menu.
  *
  */
 
 export const Menu: GameComponent<GameState> = (state) => {
+  let x = Scene.Width / 2;
+  let y = Scene.Height / 2.3;
   const { world } = state;
 
   const resource = PIXI.Loader.shared.resources[Textures.MenuIdle];
   const texture = resource.textures!["menu_button_idle0.png"];
 
+  const title = titleText("Koala Kingdom");
+  GameContainer.addChild(title);
+
   let buttonContainer: PIXI.Container = new PIXI.Container();
 
-  let x = Scene.Width / 2;
-  let y = Scene.Height / 2.3;
   console.log("Menu Creation");
   const start = new Menu_Button(x, y, "START");
   const instructions = new Menu_Button(x, y + 50, "INSTRUCTIONS");
@@ -36,7 +67,7 @@ export const Menu: GameComponent<GameState> = (state) => {
 
   start.on("click", (_onclick) => {
     buttonContainer.visible = false;
-    GameContainer.children[3].visible = true;
+    GameContainer.children[4].visible = true;
   });
 
   return {
