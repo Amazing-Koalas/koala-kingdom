@@ -38,8 +38,8 @@ export const initState = (props: InitProps): GameState => ({
             vX: 0,
             vY: 0,
             speed: 2,
-            direction: CardinalDirection.East,
-            mode: CharacterMode.Idle
+            direction: CardinalDirection.South,
+            mode: CharacterMode.RunUp
         },
         menu:{
             x: Scene.Width / 2,

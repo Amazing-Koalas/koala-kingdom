@@ -2,7 +2,9 @@ export enum CharacterMode {
     RunUp,
     RunDown,
     RunSide,
-    Idle
+    IdleFront,
+    IdleBack,
+    IdleSide
 }
 
 export const KeyCodes = {
@@ -11,12 +13,13 @@ export const KeyCodes = {
     ArrowDown: "ArrowDown",
     ArrowLeft: "ArrowLeft",
     ArrowRight: "ArrowRight",
+    ShiftLeft: "ShiftLeft"
 };
 
 export const CardinalDirection = {
-    North: -1,
+    North: 10,
     East: 1,
-    South: 1,
+    South: -10,
     West: -1,
 };
 export const Scene = {
