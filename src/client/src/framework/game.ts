@@ -9,6 +9,8 @@ export interface AppConfig {
 //export type RenderFn<T> = (displayObject: PIXI.DisplayObject, state: T) => void;
 export type RenderFn<T> = (displayObject: PIXI.DisplayObject, state: T) => void;
 
+export const GameContainer = new PIXI.Container();
+
 export type GameComponent<T> = (
     state: T
 ) => {
@@ -28,10 +30,10 @@ export const initializeComponents = <T>(
     components: GameComponent<T>[],
     state: T
 ) => {
-    const container = new PIXI.Container();
+    //const container = new PIXI.Container();
     components.forEach(component => {
         const cmp = component(state);
-        container.addChild(cmp.displayObject);
+        GameContainer.addChild(cmp.displayObject);
         app.ticker.add(() => {
             cmp.render(cmp.displayObject, state);
 
@@ -39,7 +41,7 @@ export const initializeComponents = <T>(
     });
 
     return () => {
-        app.stage.addChild(container);
+        app.stage.addChild(GameContainer);
         app.renderer.render(app.stage);
     };
 };

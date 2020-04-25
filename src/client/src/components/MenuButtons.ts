@@ -1,26 +1,43 @@
 import { Textures, Scene, World } from "../constants";
-
+import * as PIXI from "pixi.js";
 
 
 
 export class Menu_Button extends PIXI.Sprite{
-    sc: PIXI.Container;
+    //sc: PIXI.Container;
     //x: number;
     //y: number;
     text: PIXI.Text;
-    action;
+    //action;
 
-    constructor(scene: PIXI.Container, x: number, y: number, text: string){
+    constructor( x: number, y: number, text: string){
         //const {world}
         const resource = PIXI.Loader.shared.resources[Textures.MenuIdle];
-        const texture = resource.textures!["menu_button_idle.png"];
+        const texture = resource.textures!["menu_button_idle0.png"];
         super(texture);
         this.x = x;
         this.y = y;
-        this.sc = scene;
-        //this.text = new PIXI.Text(text, {fontFamily: 'monospace', fontStyle: 'bold', color: '#ffffff', align: 'center' });
+        this.scale = new PIXI.Point(2.5,2.5);
+        this.anchor.set(0.5);
+        this.interactive = true;
+        this.buttonMode = true;
+        //this.sc = scene;
+        this.text = new PIXI.Text(text, {fontFamily: 'monospace', fontStyle: 'bold', color: '#ffffff', align: 'center'});
+        this.setText();
         //this.sc.
     }
+
+    setText(){
+        this.addChild(this.text);
+        this.text.anchor.set(0.5);
+        if(this.text.text.length > 10){
+            this.text.scale = new PIXI.Point(0.4, 0.4);
+        }else{
+            this.text.scale = new PIXI.Point(0.5, 0.5);
+        }
+    }
+
+    
 }
 
 

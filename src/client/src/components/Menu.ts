@@ -1,5 +1,5 @@
 import * as PIXI from "pixi.js";
-import { noop, GameComponent, RenderFn } from "../framework";
+import { GameContainer, noop, GameComponent, RenderFn } from "../framework";
 import { Textures, Scene } from "../constants";
 import { GameState } from "../state";
 import { Menu_Button } from "../components/MenuButtons";
@@ -8,9 +8,9 @@ const render: RenderFn<GameState> = (container: PIXI.Container, state) => {
   const { world } = state;
   const resource = PIXI.Loader.shared.resources[Textures.MenuIdle];
 
-    container.x = Scene.Width / 2 - container.width / 2;
-    container.y = Scene.Height / 2 - container.height / 2;
-}
+  container.x = Scene.Width / 2 - container.width / 2;
+  container.y = Scene.Height / 2 - container.height / 2;
+};
 /**
  * Creates Menu.
  *
@@ -18,31 +18,26 @@ const render: RenderFn<GameState> = (container: PIXI.Container, state) => {
 
 export const Menu: GameComponent<GameState> = (state) => {
   const { world } = state;
-  /*const resource = PIXI.Loader.shared.resources[Textures.MenuIdle];
-  const container = new PIXI.Container();
-  
-  const start = new Menu_Button(container, -500, this.game.config.height * 0.55, "PLAY");
 
-  container.addChild(start);
-  */
   const resource = PIXI.Loader.shared.resources[Textures.MenuIdle];
   const texture = resource.textures!["menu_button_idle0.png"];
 
-  let buttonArray: PIXI.Sprite[] = new Array(3);
   let buttonContainer: PIXI.Container = new PIXI.Container();
 
-  for (var i = 0; i < 3; i++) {
-    const button = new PIXI.Sprite(texture);
+  let x = Scene.Width / 2;
+  let y = Scene.Height / 2.3;
+  console.log("Menu Creation");
+  const start = new Menu_Button(x, y, "START");
+  const instructions = new Menu_Button(x, y + 50, "INSTRUCTIONS");
+  const hello = new Menu_Button(x, y + 100, "HELLO");
+  buttonContainer.addChild(start);
+  buttonContainer.addChild(instructions);
+  buttonContainer.addChild(hello);
 
-    button.x = Scene.Width / 2;
-    button.y = Scene.Height / 2.3 + i * 50;
-    button.scale = new PIXI.Point(2.5, 2.5);
-    button.anchor.set(0.5);
-    button.interactive = true;
-    button.buttonMode = true;
-    buttonArray[i] = button;
-    buttonContainer.addChild(button);
-  }
+  start.on("click", (_onclick) => {
+    buttonContainer.visible = false;
+    GameContainer.children[3].visible = true;
+  });
 
   return {
     displayObject: buttonContainer,

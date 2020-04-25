@@ -3,6 +3,7 @@ import {
     createPixiApp,
     loadPixiAssets,
     initializeComponents,
+    GameContainer,
 } from "./framework";
 import { Scene, Textures, World } from "./constants";
 import { Character } from "./components/Character";
@@ -15,7 +16,7 @@ import { initState } from "./state";
 const initGame = async () => {
 
     const [_, level] = await Promise.all([loadPixiAssets(Textures)]);
-    document.getElementById('startScreen').style.display = 'none';
+    //document.getElementById('startScreen').style.display = 'none';
 
     const canvasEl = getCanvasEl("game");
     canvasEl.height = Scene.Height;
@@ -28,20 +29,23 @@ const initGame = async () => {
     });
 
 
-    const initializer = initializeComponents(
+    /*const initializer = initializeComponents(
         pixiApp,
         [State, Background, Character],
         initState({})
-    );
+    );*/
 
-    const startGame  = initializeComponents(pixiApp,[Background, Menu],initState({}));
+    const startGame  = initializeComponents(pixiApp,[Background, Menu, State, Character],initState({}));
     
     //initializer();
     startGame();
+    
+    GameContainer.children[3].visible = false;
+    //console.log(GameContainer.chi);
     //pixiApp.stage.children[0].visible = false;
 
 };
 
-let btn = document.getElementById("startBtn");
-btn.onclick = function(){initGame()};
-//initGame();
+//let btn = document.getElementById("startBtn");
+//btn.onclick = function(){initGame()};
+initGame();
