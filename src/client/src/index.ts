@@ -36,8 +36,8 @@ const initGame = async () => {
 
     const startGame  = initializeComponents(pixiApp,[Background, Menu],initState({}));
     
-    initializer();
-    //startGame();
+    //initializer();
+    startGame();
     //pixiApp.stage.children[0].visible = false;
 
 };
