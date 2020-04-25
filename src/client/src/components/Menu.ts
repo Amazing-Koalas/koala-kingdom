@@ -3,6 +3,7 @@ import { GameContainer, noop, GameComponent, RenderFn } from "../framework";
 import { Textures, Scene } from "../constants";
 import { GameState } from "../state";
 import { Menu_Button } from "../components/MenuButtons";
+import { backgroundSprite } from "../components/Background";
 
 const render: RenderFn<GameState> = (container: PIXI.Container, state) => {
   const { world } = state;
@@ -47,6 +48,11 @@ const titleText = (text: string) => {
 export const Menu: GameComponent<GameState> = (state) => {
   let x = Scene.Width / 2;
   let y = Scene.Height / 2.3;
+  backgroundSprite.scale.x = 3.5;//1.25
+  console.log(Scene.Height / backgroundSprite.height);
+  backgroundSprite.scale.y = 1.75; //0.56
+  backgroundSprite.tilePosition.x = 0;
+  backgroundSprite.tilePosition.y = 0;
   const { world } = state;
 
   const resource = PIXI.Loader.shared.resources[Textures.MenuIdle];

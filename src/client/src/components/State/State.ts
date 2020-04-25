@@ -2,6 +2,7 @@ import * as PIXI from "pixi.js";
 import { GameComponent, getKeyboardState, RenderFn } from "../../framework";
 import { GameState } from "../../state";
 import { calculateCharacterState } from "./characterState";
+import { World } from '../../constants';
 
 const render: RenderFn<GameState> = (_, state) => {
   const keyboard = getKeyboardState();

@@ -28,6 +28,10 @@ const render: RenderFn<GameState> = (sprite: PIXI.AnimatedSprite, state) => {
     sprite.scale.x = Math.abs(sprite.scale.x) * world.character.direction;
   }
 
+  if(world.character.speed > 0.75){
+    sprite.animationSpeed = 0.2;
+  }else sprite.animationSpeed = 0.125;
+
   sprite.x = Scene.Width / 2 - sprite.width / 2; //world.character.vX;
   sprite.y = Scene.Height / 2 - sprite.height / 2; //world.character.vY;
 
@@ -49,10 +53,10 @@ export const Character: GameComponent<GameState> = (state) => {
   );
   sprite.x = Scene.Width / 2; //world.character.x;
   sprite.y = Scene.Height / 2 - sprite.height / 2 + 4; //world.character.y;
-  //sprite.scale = new PIXI.Point(1.5, 1.5);
+  sprite.scale = new PIXI.Point(1.5, 1.5);
   sprite.anchor = new PIXI.Point(0.5);
   sprite.play();
-  sprite.animationSpeed = 0.15;
+  sprite.animationSpeed = 0.125;
   return {
     displayObject: sprite,
     render,

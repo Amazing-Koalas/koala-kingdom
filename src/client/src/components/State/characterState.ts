@@ -68,9 +68,9 @@ const getCharacterV = (keyboard: KeyboardState, speed: number) => {
 
 const getCharacterSpeed = (keyboard: KeyboardState) =>{
     if(keyboard.ShiftLeft){
-        return 4;
+        return 1.25;
     }
-    return 1;
+    return 0.75;
 }
 
 export const calculateCharacterState = (

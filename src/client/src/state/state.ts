@@ -37,7 +37,7 @@ export const initState = (props: InitProps): GameState => ({
             y: Scene.Height / 2,
             vX: 0,
             vY: 0,
-            speed: 2,
+            speed: 0.75,
             direction: CardinalDirection.South,
             mode: CharacterMode.RunUp
         },
