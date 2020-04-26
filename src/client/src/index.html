@@ -1,97 +1,43 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8" />
-        <title>Koala Kingdom</title>
-        <meta name="author" content="Amazing Koalas" />
-        <meta http-equiv="Content-Type" content="text/html" charset="utf-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <meta
-            name="viewport"
-            content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0"
-        />
-        <!---<link rel="stylesheet" type="text/css" href="style.css">-->
-         <style>
-            body,
-            html {
-                width: 100%;
-                height: 100%;
-                margin: 0;
-                padding: 0;
-            }
-            #container {
-                width: 100%;
-                height: 100%;
-                overflow: hidden;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-            }
-            #game {
-                margin: auto;
-                overflow: hidden;
-            }
-            #startScreen {
-  margin: auto;
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  text-align: center;
-  box-shadow: 0 1px 32px white;
-  animation-fill-mode: forwards;
-}
+  <head>
+    <meta charset="UTF-8" />
+    <title>Koala Kingdom</title>
+    <meta name="author" content="Amazing Koalas" />
+    <meta http-equiv="Content-Type" content="text/html" charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0"
+    />
+    <!---<link rel="stylesheet" type="text/css" href="style.css">-->
+    <style>
+      body,
+      html {
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+      #container {
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      #game {
+        margin: auto;
+        overflow: hidden;
+      }
+    </style>
+  </head>
 
-
-#startScreen div {
-  height: 50%;
-}
-
-#startScreen h1 {
-  position:absolute;
-  width: 100%;
-  color: #222;
-  font-size: 40px;
-  text-shadow: 0 1px 2px;
-  animation: pulse 6s linear infinite;
-}
-
-@keyframes pulse {
-  50% {
-    transform: scale(1.1);
-  }
-}
-
-#startScreen p {
-  font-weight: bold;
-}
-
-#startScreen span {
-  position: relative;
-  font-size: 18px;
-  animation: up 2s linear infinite;
-  animation-delay: 3s;
-}
-
-@keyframes up {
-  25% {
-    top: -4px;
-  }
-}
-        </style>
-</head>
-
-    <body>
-        <div id="container">
-            <!--<div id="startScreen">
-                <div>
-                <h1>Koala Kingdom</h1>
-                </div>
-                <div>
-                    <input type="button", value="Start", id="startBtn">
-                </div>
-          </div>-->
-            <canvas id="game"></canvas>
-        </div>
-        <!-- javascript blob automatically included below -->
-    </body>
+  <body>
+    <div id="container">
+      <canvas id="game"></canvas>
+    </div>
+    <!-- javascript blob automatically included below -->
+  </body>
 </html>

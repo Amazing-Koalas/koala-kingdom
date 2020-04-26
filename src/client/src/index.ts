@@ -2,10 +2,11 @@ import {
   getCanvasEl,
   createPixiApp,
   loadPixiAssets,
+  loadPixiSounds,
   initializeComponents,
   GameContainer,
 } from "./framework";
-import { Scene, Textures } from "./constants";
+import { Scene, Textures, Sounds } from "./constants";
 import { Character } from "./components/Character";
 import { Background } from "./components/Background";
 import { State } from "./components/State";
@@ -14,6 +15,7 @@ import { initState } from "./state";
 
 const initGame = async () => {
   const [_] = await Promise.all([loadPixiAssets(Textures)]);
+  //const [] = await Promise.all([loadPixiSounds(Sounds)]);
 
   const canvasEl = getCanvasEl("game");
   canvasEl.height = Scene.Height;

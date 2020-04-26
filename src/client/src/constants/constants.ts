@@ -33,15 +33,20 @@ export const Textures = {
   Background: "assets/background/terrain.json",
   MenuIdle: "assets/menu/menu_button_idle.json",
   MenuFocus: "assets/menu/menu_button_focus.json",
+  //Sounds
+  /*
+  MenuMusic: "assets/audio/menu_music.wav",
+  MenuSelect: "assests/audio/menu_select.mp3",
+  MenuSwitch: "assests/audio/menu_switch.mp3",
+  WorldTrack: "assests/audio/Forest Drama.mp3",
+*/
 };
-
 export const Sounds = {
   MenuMusic: "assets/audio/menu_music.wav",
   MenuSelect: "assests/audio/menu_select.mp3",
   MenuSwitch: "assests/audio/menu_switch.mp3",
   WorldTrack: "assests/audio/Forest Drama.mp3",
 };
-
 export const World = {
   Character: {
     Speed: 1,

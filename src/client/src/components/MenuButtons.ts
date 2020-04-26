@@ -21,7 +21,6 @@ export class Menu_Button extends PIXI.Sprite {
     //this.accessibleTitle = this.name;
 
     this.on("mouseover", this.focus).on("mouseout", this.idle);
-    
   }
 
   setText(text: string) {

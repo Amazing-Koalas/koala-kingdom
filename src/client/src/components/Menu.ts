@@ -1,17 +1,12 @@
 import * as PIXI from "pixi.js";
-import {
-  noop,
-  GameComponent,
-  RenderFn,
-  loadPixiAssets,
-} from "../framework";
-import { Textures, Scene } from "../constants";
+import * as SOUND from "pixi-sound";
+import { noop, GameComponent, RenderFn, loadPixiAssets } from "../framework";
+import { Sounds, Scene } from "../constants";
 import { GameState } from "../state";
 import { Menu_Button } from "../components/MenuButtons";
 import { backgroundSprite } from "../components/Background";
 
 const render: RenderFn<GameState> = (container: PIXI.Container, state) => {
-
   container.x = Scene.Width / 2 - container.width / 2;
   container.y = Scene.Height / 2 - container.height / 2;
 };
@@ -97,8 +92,15 @@ const titleText = (text: string) => {
  */
 
 export const Menu: GameComponent<GameState> = (state) => {
-  //const resource = PIXI.Loader.shared.resources[Textures.MenuMusic];
-  //const menuMusic = resource.load(() => {})
+  
+  SOUND.default.Sound.from({
+    url: "assets/audio/menu_music.wav",
+    preload: true,
+    loaded: function(_err, sound) {
+      sound.play();
+    },
+    volume: 0.1
+  });
   let x = Scene.Width / 2;
   let y = Scene.Height / 2.3;
   backgroundSprite.scale.x = 3.5;

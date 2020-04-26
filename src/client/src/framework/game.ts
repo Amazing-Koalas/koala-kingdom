@@ -1,4 +1,5 @@
 import * as PIXI from "pixi.js";
+import * as Sound from "pixi-sound";
 export interface AppConfig {
   view: HTMLCanvasElement;
   width: number;
@@ -75,6 +76,10 @@ export const createPixiApp = (config: AppConfig) => {
  * @param textures map of textures to their paths
  */
 export const loadPixiAssets = (textures: { [key: string]: string }) => {
+  //PIXI.Loader.shared.add("WorldTrack", "assests/audio/Forest Drama.mp3");
+  //PIXI.Loader.shared.load(function (loader, resources) {
+    //resources.WorldTrack.sound.play();
+  //});
   return new Promise((resolve) => {
     PIXI.Loader.shared.add(
       Object.keys(textures).map((key: keyof typeof textures) => textures[key])
@@ -84,14 +89,16 @@ export const loadPixiAssets = (textures: { [key: string]: string }) => {
 };
 
 export const loadPixiSounds = (sounds: { [key: string]: string }) => {
-  for (var key in sounds) {
-    PIXI.Loader.shared.add(key, sounds[key]);
-  }
-  PIXI.Loader.shared.add("MenuSelect", "assests/audio/menu_select.mp3");
+  PIXI.Loader.shared.add("WorldTrack", "assests/audio/Forest Drama.mp3");
   PIXI.Loader.shared.load(function (loader, resources) {
-    resources.MenuSelect;
+    resources.WorldTrack.sound.play();
   });
-
+  return new Promise((resolve) => {
+    PIXI.Loader.shared.add(
+      Object.keys(sounds).map((key: keyof typeof sounds) => sounds[key])
+    );
+    PIXI.Loader.shared.load(resolve);
+  });
   //PIXI.Loader.shared.add(Object.keys(sounds).map((key: keyof typeof sounds) => sounds[key]));
   //sounds. PIXI.Loader.shared.load(function(loader, audio))
 };
