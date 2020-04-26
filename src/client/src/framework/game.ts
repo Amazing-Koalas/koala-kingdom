@@ -82,3 +82,14 @@ export const loadPixiAssets = (textures: { [key: string]: string }) => {
     PIXI.Loader.shared.load(resolve);
   });
 };
+
+export const loadPixiSounds = (sounds: {[key: string]: string}) => {
+
+  for(var key in sounds){
+    PIXI.Loader.shared.add(key, sounds[key]);
+  }
+    //PIXI.Loader.shared.add(Object.keys(sounds).map((key: keyof typeof sounds) => sounds[key]));
+    //sounds. PIXI.Loader.shared.load(function(loader, audio))
+
+
+}
