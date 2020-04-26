@@ -88,6 +88,8 @@ export const loadPixiSounds = (sounds: {[key: string]: string}) => {
   for(var key in sounds){
     PIXI.Loader.shared.add(key, sounds[key]);
   }
+  //PIXI.Loader.shared.load(function(loader, resources){resources.MenuMusic.sound.play()});
+  
     //PIXI.Loader.shared.add(Object.keys(sounds).map((key: keyof typeof sounds) => sounds[key]));
     //sounds. PIXI.Loader.shared.load(function(loader, audio))
 
