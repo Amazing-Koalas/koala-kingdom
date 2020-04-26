@@ -1,11 +1,8 @@
 import * as PIXI from "pixi.js";
 import {
-  KeyboardState,
-  GameContainer,
   noop,
   GameComponent,
   RenderFn,
-  getKeyboardState,
 } from "../framework";
 import { Textures, Scene } from "../constants";
 import { GameState } from "../state";
@@ -13,8 +10,6 @@ import { Menu_Button } from "../components/MenuButtons";
 import { backgroundSprite } from "../components/Background";
 
 const render: RenderFn<GameState> = (container: PIXI.Container, state) => {
-  const { world } = state;
-  const resource = PIXI.Loader.shared.resources[Textures.MenuIdle];
 
   container.x = Scene.Width / 2 - container.width / 2;
   container.y = Scene.Height / 2 - container.height / 2;

@@ -8,7 +8,6 @@ import {
 import { GameState } from "../../state";
 import { calculateCharacterState } from "./characterState";
 import { calculateMenuState } from "./menuState";
-import { World } from "../../constants";
 
 const render: RenderFn<GameState> = (_, state) => {
   const keyboard = getKeyboardState();

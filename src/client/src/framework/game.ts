@@ -1,5 +1,4 @@
 import * as PIXI from "pixi.js";
-import { Character } from "../components/Character";
 export interface AppConfig {
   view: HTMLCanvasElement;
   width: number;

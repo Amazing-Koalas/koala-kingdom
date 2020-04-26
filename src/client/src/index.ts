@@ -13,7 +13,7 @@ import { Menu } from "./components/Menu";
 import { initState } from "./state";
 
 const initGame = async () => {
-  const [_, level] = await Promise.all([loadPixiAssets(Textures)]);
+  const [_] = await Promise.all([loadPixiAssets(Textures)]);
 
   const canvasEl = getCanvasEl("game");
   canvasEl.height = Scene.Height;

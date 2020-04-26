@@ -1,6 +1,5 @@
 import { Textures, Scene, World } from "../constants";
 import * as PIXI from "pixi.js";
-import { loadPixiAssets } from "../framework";
 
 export class Menu_Button extends PIXI.Sprite {
   text: PIXI.Text;
