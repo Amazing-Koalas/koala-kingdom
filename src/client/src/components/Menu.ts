@@ -1,5 +1,12 @@
 import * as PIXI from "pixi.js";
-import { GameContainer, noop, GameComponent, RenderFn } from "../framework";
+import {
+  KeyboardState,
+  GameContainer,
+  noop,
+  GameComponent,
+  RenderFn,
+  getKeyboardState,
+} from "../framework";
 import { Textures, Scene } from "../constants";
 import { GameState } from "../state";
 import { Menu_Button } from "../components/MenuButtons";
@@ -11,6 +18,54 @@ const render: RenderFn<GameState> = (container: PIXI.Container, state) => {
 
   container.x = Scene.Width / 2 - container.width / 2;
   container.y = Scene.Height / 2 - container.height / 2;
+};
+
+export const menuContainer: PIXI.Container = new PIXI.Container();
+export const buttonContainer: PIXI.Container = new PIXI.Container();
+export const helpContainer: PIXI.Container = new PIXI.Container();
+export const creditsContainer: PIXI.Container = new PIXI.Container();
+
+const setupContainers = () => {
+  const style = new PIXI.TextStyle({
+    align: "center",
+    dropShadow: true,
+    dropShadowAngle: 0.4,
+    dropShadowBlur: 7,
+    dropShadowColor: "#3e4a86",
+    dropShadowDistance: 6,
+    fill: ["#6f92a4", "black"],
+    fillGradientStops: [0],
+    fontFamily: "Courier New",
+    fontSize: 37,
+    fontVariant: "small-caps",
+    fontWeight: "bold",
+    letterSpacing: 5,
+    miterLimit: 15,
+    strokeThickness: 2,
+  });
+  const helpText = new PIXI.Text(
+    "Controls\nMove: Arrows\nSprint: Left Shift\nMenu: Esc",
+    style
+  );
+  helpText.anchor.set(0.5);
+  helpContainer.addChild(helpText);
+  helpText.x = Scene.Width / 2;
+  helpText.y = Scene.Height / 2;
+  helpContainer.visible = false;
+
+  const creditsText = new PIXI.Text(
+    "Jemal Abdullahi\nDave Tran\nJared Rickert\nMichael Harrison",
+    style
+  );
+  creditsText.anchor.set(0.5);
+  creditsText.x = Scene.Width / 2;
+  creditsText.y = Scene.Height / 2;
+  creditsContainer.addChild(creditsText);
+  creditsContainer.visible = false;
+
+  helpContainer.name = "helpContainer";
+  creditsContainer.name = "creditsContainer";
+  menuContainer.addChild(helpContainer, creditsContainer);
 };
 
 const titleText = (text: string) => {
@@ -52,32 +107,26 @@ export const Menu: GameComponent<GameState> = (state) => {
   backgroundSprite.scale.y = 1.75;
   backgroundSprite.tilePosition.x = 650;
   backgroundSprite.tilePosition.y = 600;
-  const { world } = state;
-
-  const resource = PIXI.Loader.shared.resources[Textures.MenuIdle];
-  const texture = resource.textures!["menu_button_idle0.png"];
 
   const title = titleText("Koala Kingdom");
+  title.name = "title";
+  menuContainer.addChild(title);
 
-  let buttonContainer: PIXI.Container = new PIXI.Container();
-
-  console.log("Menu Creation");
   const start = new Menu_Button(x, y, "START");
-  const instructions = new Menu_Button(x, y + 50, "INSTRUCTIONS");
-  const hello = new Menu_Button(x, y + 100, "HELLO");
+  const help = new Menu_Button(x, y + 50, "HELP");
+  const credits = new Menu_Button(x, y + 100, "CREDITS");
 
-  buttonContainer.addChild(title);
   buttonContainer.addChild(start);
-  buttonContainer.addChild(instructions);
-  buttonContainer.addChild(hello);
+  buttonContainer.addChild(help);
+  buttonContainer.addChild(credits);
 
-  start.on("click", (_onclick) => {
-    buttonContainer.visible = false;
-    GameContainer.children[3].visible = true;
-  });
+  buttonContainer.name = "buttonContainer";
+  menuContainer.addChild(buttonContainer);
+
+  setupContainers();
 
   return {
-    displayObject: buttonContainer,
+    displayObject: menuContainer,
     render: noop,
   };
 };
