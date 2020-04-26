@@ -51,8 +51,8 @@ export const Character: GameComponent<GameState> = (state) => {
   const sprite = new PIXI.AnimatedSprite(
     resource.spritesheet!.animations.idle_side
   );
-  sprite.x = Scene.Width / 2; //world.character.x;
-  sprite.y = Scene.Height / 2 - sprite.height / 2 + 4; //world.character.y;
+  sprite.x = Scene.Width / 2 - sprite.width / 2;
+  sprite.y = Scene.Height / 2 - sprite.height / 2;
   sprite.scale = new PIXI.Point(1.5, 1.5);
   sprite.anchor = new PIXI.Point(0.5);
   sprite.play();
