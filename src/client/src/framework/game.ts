@@ -83,15 +83,15 @@ export const loadPixiAssets = (textures: { [key: string]: string }) => {
   });
 };
 
-export const loadPixiSounds = (sounds: {[key: string]: string}) => {
-
-  for(var key in sounds){
+export const loadPixiSounds = (sounds: { [key: string]: string }) => {
+  for (var key in sounds) {
     PIXI.Loader.shared.add(key, sounds[key]);
   }
-  //PIXI.Loader.shared.load(function(loader, resources){resources.MenuMusic.sound.play()});
-  
-    //PIXI.Loader.shared.add(Object.keys(sounds).map((key: keyof typeof sounds) => sounds[key]));
-    //sounds. PIXI.Loader.shared.load(function(loader, audio))
+  PIXI.Loader.shared.add("MenuSelect", "assests/audio/menu_select.mp3");
+  PIXI.Loader.shared.load(function (loader, resources) {
+    resources.MenuSelect;
+  });
 
-
-}
+  //PIXI.Loader.shared.add(Object.keys(sounds).map((key: keyof typeof sounds) => sounds[key]));
+  //sounds. PIXI.Loader.shared.load(function(loader, audio))
+};

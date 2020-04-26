@@ -97,8 +97,8 @@ const titleText = (text: string) => {
  */
 
 export const Menu: GameComponent<GameState> = (state) => {
-  const resource = PIXI.Loader.shared.resources[Textures.MenuMusic];
-  const menuMusic = resource.load(() => {})
+  //const resource = PIXI.Loader.shared.resources[Textures.MenuMusic];
+  //const menuMusic = resource.load(() => {})
   let x = Scene.Width / 2;
   let y = Scene.Height / 2.3;
   backgroundSprite.scale.x = 3.5;
