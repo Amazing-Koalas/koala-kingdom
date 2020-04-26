@@ -6,7 +6,7 @@ import {
   CharacterMode,
   Scene,
 } from "../../constants";
-import { backgroundSprite } from '../Background';
+import { backgroundSprite } from "../Background";
 
 const getCharacterMoveDirection = (
   keyboard: KeyboardState,
@@ -67,12 +67,12 @@ const getCharacterV = (keyboard: KeyboardState, speed: number) => {
   return velocities;
 };
 
-const getCharacterSpeed = (keyboard: KeyboardState) =>{
-    if(keyboard.ShiftLeft){
-        return 1.25;
-    }
-    return 0.75;
-}
+const getCharacterSpeed = (keyboard: KeyboardState) => {
+  if (keyboard.ShiftLeft) {
+    return 1.25;
+  }
+  return 0.75;
+};
 
 export const calculateCharacterState = (
   { world }: GameState,

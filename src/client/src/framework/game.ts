@@ -1,9 +1,9 @@
 import * as PIXI from "pixi.js";
 import { Character } from "../components/Character";
 export interface AppConfig {
-    view: HTMLCanvasElement;
-    width: number;
-    height: number;
+  view: HTMLCanvasElement;
+  width: number;
+  height: number;
 }
 
 //export type RenderFn<T> = (displayObject: PIXI.DisplayObject, state: T) => void;
@@ -12,10 +12,10 @@ export type RenderFn<T> = (displayObject: PIXI.DisplayObject, state: T) => void;
 export const GameContainer = new PIXI.Container();
 
 export type GameComponent<T> = (
-    state: T
+  state: T
 ) => {
-    displayObject: PIXI.DisplayObject;
-    render: RenderFn<T>;
+  displayObject: PIXI.DisplayObject;
+  render: RenderFn<T>;
 };
 
 /**
@@ -26,24 +26,24 @@ export type GameComponent<T> = (
  * @param state game state
  */
 export const initializeComponents = <T>(
-    app: PIXI.Application,
-    components: GameComponent<T>[],
-    state: T
+  app: PIXI.Application,
+  components: GameComponent<T>[],
+  state: T
 ) => {
-    //const container = new PIXI.Container();
-    components.forEach(component => {
-        const cmp = component(state);
-        GameContainer.addChild(cmp.displayObject);
-        app.ticker.add(() => {
-            cmp.render(cmp.displayObject, state);
-
-        });
+  //const container = new PIXI.Container();
+  components.forEach((component) => {
+    const cmp = component(state);
+    cmp.displayObject.name = component.name;
+    GameContainer.addChild(cmp.displayObject);
+    app.ticker.add(() => {
+      cmp.render(cmp.displayObject, state);
     });
+  });
 
-    return () => {
-        app.stage.addChild(GameContainer);
-        app.renderer.render(app.stage);
-    };
+  return () => {
+    app.stage.addChild(GameContainer);
+    app.renderer.render(app.stage);
+  };
 };
 
 /**
@@ -53,11 +53,11 @@ export const initializeComponents = <T>(
  * @param id id of canvas element
  */
 export const getCanvasEl = (id: string) => {
-    const canvas = document.getElementById(id) as HTMLCanvasElement | null;
-    if (!canvas) {
-        throw new Error(`Canvas with specified id ${id} not found.`);
-    }
-    return canvas;
+  const canvas = document.getElementById(id) as HTMLCanvasElement | null;
+  if (!canvas) {
+    throw new Error(`Canvas with specified id ${id} not found.`);
+  }
+  return canvas;
 };
 
 /**
@@ -66,7 +66,7 @@ export const getCanvasEl = (id: string) => {
  * @param config initial config
  */
 export const createPixiApp = (config: AppConfig) => {
-    return new PIXI.Application(config);
+  return new PIXI.Application(config);
 };
 
 /**
@@ -76,12 +76,10 @@ export const createPixiApp = (config: AppConfig) => {
  * @param textures map of textures to their paths
  */
 export const loadPixiAssets = (textures: { [key: string]: string }) => {
-    return new Promise(resolve => {
-        PIXI.Loader.shared.add(
-            Object.keys(textures).map(
-                (key: keyof typeof textures) => textures[key]
-            )
-        );
-        PIXI.Loader.shared.load(resolve);
-    });
+  return new Promise((resolve) => {
+    PIXI.Loader.shared.add(
+      Object.keys(textures).map((key: keyof typeof textures) => textures[key])
+    );
+    PIXI.Loader.shared.load(resolve);
+  });
 };

@@ -1,12 +1,21 @@
 import * as PIXI from "pixi.js";
-import { GameComponent, getKeyboardState, RenderFn } from "../../framework";
+import {
+  GameComponent,
+  getKeyboardState,
+  RenderFn,
+  GameContainer,
+} from "../../framework";
 import { GameState } from "../../state";
 import { calculateCharacterState } from "./characterState";
-import { World } from '../../constants';
+import { calculateMenuState } from "./menuState";
+import { World } from "../../constants";
 
 const render: RenderFn<GameState> = (_, state) => {
   const keyboard = getKeyboardState();
-  state.world.character = calculateCharacterState(state, keyboard);
+  if (GameContainer.getChildByName("Character").visible) {
+    state.world.character = calculateCharacterState(state, keyboard);
+  }
+  calculateMenuState(keyboard);
 };
 
 /**
@@ -15,6 +24,6 @@ const render: RenderFn<GameState> = (_, state) => {
 export const State: GameComponent<GameState> = () => {
   return {
     displayObject: new PIXI.Sprite(),
-    render
+    render,
   };
 };
