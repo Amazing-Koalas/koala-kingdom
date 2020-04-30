@@ -190,6 +190,9 @@
 	"anchor": {"x":0.5,"y":0.5}
 }},
 "animations": {
+	"idle_front": ["front_run_06.png"],
+	"idle_back": ["back_run_06.png"],
+	"idle_side": ["side_run_06.png"],
 	"back_run": ["back_run_01.png","back_run_02.png","back_run_03.png","back_run_04.png","back_run_05.png","back_run_06.png"],
 	"front_run": ["front_run_01.png","front_run_02.png","front_run_03.png","front_run_04.png","front_run_05.png","front_run_06.png"],
 	"side_run": ["side_run_01.png","side_run_02.png","side_run_03.png","side_run_04.png","side_run_05.png","side_run_06.png"]

@@ -1,37 +1,42 @@
-//hello testing push
 import {
-    getCanvasEl,
-    createPixiApp,
-    loadPixiAssets,
-    initializeComponents,
+  getCanvasEl,
+  createPixiApp,
+  loadPixiAssets,
+  initializeComponents,
+  GameContainer,
 } from "./framework";
-import { Scene, Textures, World } from "./constants";
+import { Scene, Textures, Sounds } from "./constants";
 import { Character } from "./components/Character";
 import { Background } from "./components/Background";
 import { State } from "./components/State";
+import { Menu } from "./components/Menu";
 import { initState } from "./state";
 
 const initGame = async () => {
-    const canvasEl = getCanvasEl("game");
-    canvasEl.height = Scene.Height;
-    canvasEl.width = Scene.Width;
+  const [_] = await Promise.all([loadPixiAssets(Textures)]);
+  //const [] = await Promise.all([loadPixiSounds(Sounds)]);
+  //const [] = await Promise.all([loadPixiSounds(Sounds)]);
 
-    const pixiApp = createPixiApp({
-        view: canvasEl,
-        width: Scene.Width,
-        height: Scene.Height,
-    });
+  const canvasEl = getCanvasEl("game");
+  canvasEl.height = Scene.Height;
+  canvasEl.width = Scene.Width;
 
-    const [_, level] = await Promise.all([loadPixiAssets(Textures)]);
+  const pixiApp = createPixiApp({
+    view: canvasEl,
+    width: Scene.Width,
+    height: Scene.Height,
+  });
 
-    const initializer = initializeComponents(
-        pixiApp,
-        [State, Background, Character],
-        initState({})
-    );
+  const initializer = initializeComponents(
+    pixiApp,
+    [Background, Menu, State, Character],
+    initState({})
+  );
 
-    initializer();
+  initializer();
 
+  GameContainer.getChildByName("Character").visible = false;
+  //console.log(GameContainer.children);
 };
 
 initGame();

@@ -10,6 +10,8 @@ const render: RenderFn<GameState> = (sprite: PIXI.TilingSprite, state) => {
     sprite.tilePosition.y -= world.character.vY;
 };
 
+export let backgroundSprite: PIXI.TilingSprite;
+
 /**
  * Creates background sprite.
  */
@@ -17,19 +19,17 @@ export const Background: GameComponent<GameState> = () => {
     const resource = PIXI.Loader.shared.resources[Textures.Background];
     const texture = resource.textures!["terrain.png"];
     const { width, height } = texture;
-    const sprite = new PIXI.TilingSprite(
+    backgroundSprite = new PIXI.TilingSprite(
         texture,
         texture.baseTexture.width,
         texture.baseTexture.height
-    ); //new PIXI.Sprite(texture);
-    sprite.scale.x = Scene.Width / width;
-    sprite.scale.y = Scene.Height / height;
-    //sprite.width = Scene.Width;
-    //sprite.height = Scene.Height;
-    sprite.tilePosition.x = 0;
-    sprite.tilePosition.y = 0;
+    );
+    backgroundSprite.scale.x = Scene.Width / width;
+    backgroundSprite.scale.y = Scene.Height / height;
+    backgroundSprite.tilePosition.x = 0;
+    backgroundSprite.tilePosition.y = 0;
     return {
-        displayObject: sprite,
+        displayObject: backgroundSprite,
         render, //: noop,
     };
 };

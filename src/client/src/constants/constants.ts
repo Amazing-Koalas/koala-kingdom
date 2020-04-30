@@ -1,39 +1,55 @@
 export enum CharacterMode {
-    Jumping,
-    RunningVertical,
-    RunningHorizontal,
-    //RunningDiagonal,
-    Falling,
-    Idle,
+  RunUp,
+  RunDown,
+  RunSide,
+  IdleFront,
+  IdleBack,
+  IdleSide,
 }
 
 export const KeyCodes = {
-    Space: "Space",
-    ArrowUp: "ArrowUp",
-    ArrowDown: "ArrowDown",
-    ArrowLeft: "ArrowLeft",
-    ArrowRight: "ArrowRight",
+  Space: "Space",
+  ArrowUp: "ArrowUp",
+  ArrowDown: "ArrowDown",
+  ArrowLeft: "ArrowLeft",
+  ArrowRight: "ArrowRight",
+  ShiftLeft: "ShiftLeft",
+  Escape: "Escape",
 };
 
 export const CardinalDirection = {
-    North: -1,
-    East: 1,
-    South: 1,
-    West: -1,
+  North: 10,
+  East: 1,
+  South: -10,
+  West: -1,
 };
 export const Scene = {
-    Width: 1280,
-    Height: 578,
+  Width: 1280,
+  Height: 578,
 };
 
 export const Textures = {
-    Character: "assets/character/adventurer.json",
-    Background: "assets/background/terrain.json"
-};
+  Character: "assets/character/hero.json",
+  Background: "assets/background/terrain.json",
+  MenuIdle: "assets/menu/menu_button_idle.json",
+  MenuFocus: "assets/menu/menu_button_focus.json",
+  //Sounds
+  
+ // MenuMusic: "assets/audio/menu_music.wav",
+  //MenuSelect: "assests/audio/menu_select.mp3",
+  //MenuSwitch: "assests/audio/menu_switch.wav",
+  //WorldTrack: "assests/audio/Forest Drama.mp3",
 
+};
+export const Sounds = {
+  MenuMusic: "assets/audio/menu_music.wav",
+  MenuSelect: "assests/audio/menu_select.mp3",
+  MenuSwitch: "assests/audio/menu_switch.wav",
+  WorldTrack: "assests/audio/Forest Drama.mp3",
+};
 export const World = {
-    Character: {
-        Speed: 2,
-        //Direction: CardinalDirection.South,
-    },
+  Character: {
+    Speed: 1,
+    //Direction: CardinalDirection.South,
+  },
 };

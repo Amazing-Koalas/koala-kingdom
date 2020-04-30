@@ -6,11 +6,9 @@ export interface KeyboardState {
     ArrowLeft: boolean;
     ArrowUp: boolean;
     ArrowDown: boolean;
+    ShiftLeft: boolean;
+    Escape: boolean;
 }
-
-declare const BetterObject: {
-    keys<T extends {}>(object: T): (keyof T)[];
-};
 
 const initKeyboardState = () => {
     const keyboard: KeyboardState = {
@@ -19,6 +17,8 @@ const initKeyboardState = () => {
         ArrowLeft: false,
         ArrowUp: false,
         ArrowDown: false,
+        ShiftLeft: false,
+        Escape: false,
     };
 
     Object.keys(KeyCodes).forEach((code: keyof typeof KeyCodes) => {
