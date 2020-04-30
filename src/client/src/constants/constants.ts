@@ -42,9 +42,9 @@ export const Textures = {
 
 };
 export const Sounds = {
-  MenuMusic: "assets/audio/menu_music.wav",
+  MenuMusic: "assets/audio/Title.mp3",
   MenuSelect: "assests/audio/menu_select.mp3",
-  MenuSwitch: "assests/audio/menu_switch.wav",
+  MenuSwitch: "assests/audio/menu_switch.mp3",
   WorldTrack: "assests/audio/Forest Drama.mp3",
 };
 export const World = {

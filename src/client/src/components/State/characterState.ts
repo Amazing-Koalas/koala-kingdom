@@ -6,7 +6,6 @@ import {
   CharacterMode,
   Scene,
 } from "../../constants";
-import { backgroundSprite } from "../Background";
 
 const getCharacterMoveDirection = (
   keyboard: KeyboardState,
