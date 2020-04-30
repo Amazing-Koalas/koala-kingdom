@@ -4,6 +4,7 @@ import {
   loadPixiAssets,
   initializeComponents,
   GameContainer,
+  preloadSounds,
 } from "./framework";
 import { Scene, Textures, Sounds } from "./constants";
 import { Character } from "./components/Character";
@@ -14,6 +15,7 @@ import { initState } from "./state";
 
 const initGame = async () => {
   const [_] = await Promise.all([loadPixiAssets(Textures)]);
+  //preloadSounds();
   //const [] = await Promise.all([loadPixiSounds(Sounds)]);
   //const [] = await Promise.all([loadPixiSounds(Sounds)]);
 

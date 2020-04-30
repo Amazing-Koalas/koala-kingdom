@@ -6,7 +6,8 @@ import {
   creditsContainer,
 } from "../Menu";
 import { Sounds } from "../../constants";
-import Sound from "pixi-sound";
+import * as SOUND from "pixi-sound";
+import * as PIXI from "pixi.js";
 
 const escapeHome = (keyboard: KeyboardState) => {
   if (keyboard.Escape) {
@@ -22,14 +23,15 @@ const escapeHome = (keyboard: KeyboardState) => {
   }
 };
 
-const sound = Sound.Sound.from({
+
+const select = SOUND.default.Sound.from({
   url: "assets/audio/menu_select.mp3",
   preload: true,
   volume: 0.0005,
   //loop: true
 });
 
-const menuMusic = Sound.Sound.from({
+const menuMusic = SOUND.default.Sound.from({
   url: "assets/audio/Title.mp3",
   autoPlay: true,
   preload: true,
@@ -37,23 +39,29 @@ const menuMusic = Sound.Sound.from({
   loop: true,
 });
 
-const worldMusic = Sound.Sound.from({
+const worldMusic =  SOUND.default.Sound.from({
   url: "assets/audio/Forest Drama.mp3",
   preload: true,
-  volume: 0.0004,
+  volume: 0.0002,
   loop: true,
 });
-
+/*
+const sound = Loader.shared.resources['MenuSelect'].sound;
+const menuMusic = Loader.shared.resources['MenuMusic'].sound;
+const worldMusic = Loader.shared.resources['WorldTrack'].sound;
+*/
 const playMenuMusic = () => {
   if (menuMusic.paused) {
     //menuMusic.paused = false;
     menuMusic.resume();
   }
 };
-const initiated: boolean = false;
+
+let initiated: boolean = false;
 const initMusic = () => {
   if (!initiated) {
     menuMusic.play();
+    initiated = true;
   }
 };
 const scene = (scene: string) => {
@@ -62,7 +70,7 @@ const scene = (scene: string) => {
       menuMusic.pause();
       worldMusic.play();
       //menuMusic.paused = true;
-      sound.play();
+      select.play();
       buttonContainer.visible = false;
       menuContainer.getChildByName("title").visible = false;
       GameContainer.getChildByName("Character").visible = true;
@@ -70,7 +78,7 @@ const scene = (scene: string) => {
     case "help":
       //menuMusic.paused =true;
       menuMusic.pause();
-      sound.play();
+      select.play();
       buttonContainer.visible = false;
       helpContainer.visible = true;
       break;
@@ -78,7 +86,7 @@ const scene = (scene: string) => {
     case "credits":
       //menuMusic.paused =true;
       menuMusic.pause();
-      sound.play();
+      select.play();
       buttonContainer.visible = false;
       creditsContainer.visible = true;
       break;
